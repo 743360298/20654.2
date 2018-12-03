@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/list.css" />
+		<style type="text/css">
+			.aaa {
+				width: 200px;
+				height: 100px;
+				white-space: normal;
+				word-break: break-all;
+				font-size: 0.7rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="page">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">个人信息</h1>
+			</header>
+			<div class="mui-content">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell headimg">
+						<a class="mui-navigate-right headimg-a">
+							头像
+							<span class="mui-pull-right update"><img src="../images/logo.png" /></span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" @tap="setNickname">
+							昵称
+							<span class="mui-pull-right update">{{item.nick_name}}</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							个人签名
+							<span class="mui-pull-right update signature">我的愿望是每天睡醒都有小鱼干吃,吃完小鱼干还有小饼干哈哈哈哈哈哈好开心</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							性别
+							<span class="mui-pull-right update" v-if="item.sex==1">男</span>
+							<span class="mui-pull-right update" v-else>女</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							生日
+							<span class="mui-pull-right update">{{item.birthday}}</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a>
+							年龄
+							<span class="mui-pull-right update noarrow">{{item.age}}</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							职业
+							<span class="mui-pull-right update">{{item.profession}}</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							星座
+							<span class="mui-pull-right update">{{item.horoscope}}</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							地区
+							<span class="mui-pull-right update" v-show="item.province,item.city">{{item.province}}-{{item.city}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			var usertoken = localStorage.getItem("token");
+			console.log(usertoken)
+
+			new Vue({
+				el: '#page',
+				data: {
+					item: {}
+				},
+				created: function() {
+					var _this = this;
+					mui.ajax(url + 'hyapi/member/getdetail', {
+						data: {
+							token: '7941c5657fcc07cddbf01ea58f7218ea'
+							//							token: usertoken
+						},
+						type: 'get',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(JSON.stringify(successdata.data))
+							if(successdata.data) {
+								_this.item = successdata.data;
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+				},
+				methods: {
+					setNickname: function() {
+						mui.openWindow({
+							url: 'setNickname.html',
+							id: 'setNickname',
+							extras: {},
+							waiting: {
+								autoShow: false
+							}
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.user {
+				display: flex;
+				align-items: center;
+				width: 100%;
+				height: 8rem;
+				background-color: #fff;
+				box-shadow: 0.5px 1px #CCCCCC;
+				margin-bottom: 1rem;
+			}
+			
+			.usericon {
+				width: 6rem;
+				height: 6rem;
+				margin: 1rem;
+			}
+			
+			.usermsg {
+				position: absolute;
+				left: 8rem;
+				width: 12rem;
+				/*height: 100%;*/
+				/*background-color: red;*/
+			}
+			
+			.usermsg .top {
+				display: flex;
+				align-items: center;
+				/*margin-top: 1rem;*/
+			}
+			
+			.usermsg .top #name {
+				max-width: 90%;
+				margin-right: 0.5rem;
+				font-size: 1.2rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				/*border: 1px solid black;*/
+			}
+			
+			.usermsg .top #sex {
+				display: inline-block;
+				width: 0.8rem;
+				height: 1rem;
+				/*border: 1px solid black;*/
+			}
+			
+			.usermsg .middle {
+				margin: 1rem 0;
+				color: #999999;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				/*border: 1px solid black;*/
+			}
+			
+			.usermsg .bottom {
+				margin: 1rem 0;
+				color: #999999;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.likediv {
+				position: absolute;
+				right: 0;
+				width: 3rem;
+				/*height: 100%;*/
+				padding: 2.5rem 0;
+				/*background-color: red;*/
+			}
+			
+			.like {
+				display: block;
+				width: 1.2rem;
+				height: 1.2rem;
+			}
+			
+			#likenum {
+				width: 3rem;
+				height: 100%;
+				color: #888888;
+			}
+			
+			.line {
+				width: 100%;
+				height: 3.6rem;
+				line-height: 3.6rem;
+				padding: 0 1rem;
+				font-size: 1.1rem;
+				background-color: #fff;
+			}
+			
+			.line .mui-switch.mui-active {
+				float: right;
+			}
+			
+			.mui-switch:before,.mui-switch:after{
+				content: "";
+			}
+			
+			.mui-switch.mui-active:before{
+				content: "";
+			}
+			
+			.mui-switch{
+				width: 3.4rem;
+				height: 2rem;
+			}
+			
+			.mui-table-view {
+				margin-bottom: 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="page" v-cloak>
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">聊天设置</h1>
+			</header>
+			<div class="mui-content">
+				<div class="user">
+					<img class="usericon" src="../images/logo.png" />
+					<div class="usermsg">
+						<div class="top">
+							<span id="name">金吉拉</span>
+							<img id="sex" src="../images/mipmap-xhdpi/icon_sex_girl.png" />
+						</div>
+						<div class="middle">
+							<span id="age">20岁</span>
+							<span id="constellation">水瓶座</span>
+							<span id="address">广东-广州</span>
+						</div>
+						<span class="bottom">路线相似:<span id="similarity"></span></span>
+					</div>
+					<div class="likediv">
+						<img class="like" src="../images/mipmap-xhdpi/icon_good.png" />
+						<span id="likenum">
+							30
+						</span>
+					</div>
+				</div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell line">
+						<span class="miandarao">消息免打扰</span>
+						<div class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view" @tap="clear">
+					<li class="mui-table-view-cell line">
+						<span class="clear">清除聊天记录</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack: false //启用右滑关闭功能
+		});
+
+		var vm = new Vue({
+			el: '#page',
+			data: {
+				like: true,
+				items: []
+			},
+			methods: {
+				menu: function() {
+					var launchPage = plus.webview.getLaunchWebview();
+					mui.fire(launchPage, 'menu', null); //触发首页的自定义的"menu"事件，打开侧滑菜单
+				},
+				clear: function(){
+					plus.nativeUI.confirm("确定删除与该好友的聊天记录",null,"清除聊天记录")
+				}
+
+			}
+		})
+
+		//		//主界面向右滑动，若菜单未显示，则显示菜单；否则不做任何操作；
+		//		window.addEventListener("swiperight", vm.menu);
+		//		//主界面向左滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
+		//		window.addEventListener("swipeleft", vm.menu);
+		//		//menu页面向左滑动，关闭菜单；
+		//		window.addEventListener("menu:swipeleft", vm.menu);
+	</script>
+
+</html>

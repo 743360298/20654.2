@@ -1,0 +1,355 @@
+html{
+  background-color: #fff;
+}
+.mui-content{
+  background-color: #fff;
+}
+.mui-icon-back:before, .mui-icon-left-nav:before{
+  color: #000;
+}
+.couponsBox{
+  width: 100%;
+  .couponsImg{
+    width: 7.5rem ;
+    height: 4rem ;
+    img{
+      width: 100% ;
+      height: 100% ;
+    }
+  }
+  .couponsTxt{
+    position: relative;
+    padding: 0 0.24rem ;
+    margin-top: 0.3rem ;
+    display: flex;
+    flex-direction: column;
+    span{
+      line-height: initial;
+    }
+    >span:nth-child(1){
+      font-size: 0.36rem ;
+      color: #333333;
+      font-weight:bold;
+    }
+    >span:nth-child(2){
+      margin: 0.2rem 0 ;
+      font-size: 0.28rem ;
+      color: #333333;
+      font-weight:bold;
+    }
+    >span:nth-child(3){
+      font-size: 0.26rem ;
+      color: #333333;
+    }
+    .BusinessAddress{
+      line-height: initial;
+      font-size: 0.26rem ;
+      color: #333333;
+      margin: 0.2rem 0 ;
+      span{
+      }
+      .distance{
+        color: #828282;
+
+      }
+    }
+    .BusinessPhone{
+      line-height: initial;
+      font-size: 0.26rem ;
+      color: #333333;
+    }
+  }
+}
+#collect{
+  border-radius: 0.1rem ;
+  display: flex;
+  justify-content: center;
+  font-size: 0.3rem ;
+  width: 1.3rem ;
+  height: 0.6rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: -0.6rem ;
+  right: 1.8rem ;
+  img{
+    display: block;
+    width: 0.32rem ;
+    height: 0.3rem;
+    margin-right: 0.1rem ;
+    margin-top: 0.03rem ;
+    vertical-align: initial;
+  }
+  span{
+    display: block;
+    vertical-align: initial;
+  }
+}
+#GPSNav{
+  border-radius: 0.1rem ;
+  display: flex;
+  justify-content: center;
+  font-size: 0.3rem ;
+  width: 1.3rem ;
+  height: 0.6rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: -0.6rem ;
+  right: 0.24rem ;
+  img{
+    display: block;
+    width: 0.32rem ;
+    height: 0.3rem;
+    margin-right: 0.1rem ;
+    margin-top: 0.03rem ;
+    vertical-align: initial;
+  }
+  span{
+    display: block;
+    vertical-align: initial;
+  }
+}
+
+// 领取优惠券
+.receiveBox{
+  margin-top: 0.35rem ;
+  padding: 0.24rem 0;
+  >span{
+    font-size: 0.36rem ;
+    font-weight:bold;
+    font-family:PingFang-SC-Regular;
+    color: #333333;
+    padding:0 0.24rem ;
+  }
+  .receiveList{
+    li{
+      padding: 0 0.24rem 0.24rem;
+      border-bottom: 1px  solid rgba(220,220,220,1);
+    }
+    li:last-child{
+      padding: 0 0.24rem 0.24rem;
+      border-bottom: 0;
+    }
+  }
+  .receiveDetails{
+    width: 100%;
+    display: flex;
+    margin-top: 0.3rem ;
+
+    .receiveImg{
+      width: 2rem ;
+      height: 2rem ;
+      margin-right: 0.24rem ;
+      min-width: 2rem ;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .receiveTxt{
+      display: flex;
+      flex-direction: column ; 
+      justify-content: space-between;
+      width: 100%;
+      div{
+        span{
+          display: block;
+          width: 100%;
+          line-height: initial;
+        }
+        span:nth-child(1){
+          font-size: 0.32rem ; 
+          color: #333 ;
+          font-family:PingFang-SC-Regular;
+          font-weight:bold;
+        }
+        span:nth-child(2){
+          font-size: 0.24rem ; 
+          color: #828282 ;
+          font-family:PingFang-SC-Regular;
+          // font-weight:bold;
+          padding: 0.15rem 0 0.1rem ;
+        }
+        span:nth-child(3){
+          font-size: 0.24rem ; 
+          color: #828282 ;
+          font-family:PingFang-SC-Regular;
+          position: relative;
+          i{
+            font-style:normal;
+            color: #4EA3F9;
+          }
+          #receiveBtn{
+            width: 1.2rem ;
+            height: 0.6rem ;
+            position: absolute;
+            bottom: 0 ;
+            right:  0 ;
+            background-color: #4EA3F9 !important;
+            font-size: 0.26rem ;
+            line-height: 0.6rem ;
+            margin: 0 ;
+            padding:  0;
+            border-radius: 0.1rem ;
+          }
+        }
+      }
+      .validity{
+        font-size: 0.24rem ; 
+        color: #828282 ;
+        font-family:PingFang-SC-Regular;
+      }
+
+    }
+  }
+}
+
+i{
+  font-style:normal;
+}
+
+// 餐厅评价
+.evaluate{
+  // padding: 0 0.24rem ;
+  >span{
+    padding: 0 0.24rem ;
+    font-size: 0.36rem ;
+    color: #333333;
+    font-family:PingFang-SC-Regular;
+    font-weight:bold;
+  }
+  .evaluateList{
+    // margin-top: 0.2rem ;
+    .evaluateDetails:last-child{
+      border-bottom:  0;
+    }
+    .evaluateDetails{
+      padding:  0.24rem ;
+      border-bottom: 1px solid #DCDCDC;
+      width: 100%;
+      .userName{
+        display: flex;
+        .evaluateImg{
+          width: 0.8rem ;
+          height: 0.8rem ;
+          min-width: 0.8rem ;
+          margin-right: 0.15rem ;
+          img{
+            border-radius:  0.1rem ;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .evaluateName{
+          width: 100%;
+          display: flex ;
+          flex-direction: column;
+          justify-content: space-between;
+          >div{
+           display: flex;
+           justify-content: space-between;
+           >span:first-child{
+             color: #333333;
+             font-size: 0.3rem ;
+             line-height: initial;
+           }
+           >span:last-child{
+             color: #333333;
+             font-size: 0.26rem ;
+             line-height: initial;
+           }
+          }
+          >span{
+           color: #828282;
+           font-size: 0.26rem ;
+           line-height: initial;
+         }
+        }
+      }
+
+     .userComments{
+       margin-top: 0.2rem ;
+       p{
+         line-height: initial;
+         font-size: 0.3rem ;
+         color: #333333;
+       }
+      //  一张图片的样式
+       .commentsImgList{
+         margin-top: 0.3rem ;
+         li{
+           width: 2.26rem ;
+           height: 2.226rem ;
+           img{
+             width: 100%; 
+             height: 100% ;
+           }
+         }
+       }
+      //  三张以上
+      .commentsImgList3{
+        display: flex;
+        flex-wrap: wrap;
+        li{
+          width: 2.26rem;
+          height: 2.26rem ;
+          // padding: 0 0.1rem 0.1rem 0 ;
+          margin: 0 0.12rem 0.12rem 0;
+          img{
+
+          }
+        }
+        li:nth-child(3n){
+          // padding: 0 0 0.1rem 0 ;
+          margin: 0 0 0.12rem 0;
+        }
+      }
+       .replyList{
+         margin-top: 0.3rem ;
+         background-color: #f7f7f7;
+         padding:  0.2rem ;
+         position: relative;
+         .dialogue{
+           position: absolute;
+           width: 0.3rem ;
+           height: 0.15rem;
+           border-top: transparent solid 0.15rem;
+           border-left: transparent solid 0.15rem;
+          //  border-bottom: red solid 0.15rem;
+           border-bottom: #f7f7f7 solid 0.15rem;
+           border-right: transparent solid 0.15rem;
+           top:-0.3rem  ;
+           left: 0.6rem ;
+         }
+         li{
+           span{
+             font-size: 0.3rem ;
+             line-height: initial;
+           }
+           span:first-child{
+             color: #828282;
+           }
+           span:last-child{
+             color: #333;
+           }
+         }
+       }
+     }
+    }
+  }
+}
+
+.moreBtn{
+  padding: 0.24rem ;
+  display: flex;
+  justify-content: center;
+  font-size: 0.26rem ;
+  color: #333333;
+  line-height: initial;
+  margin-bottom: 0.8rem ;
+  .mui-icon{
+    font-size: 0.24rem ;
+    line-height: initial;
+  }
+}

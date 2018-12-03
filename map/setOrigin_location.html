@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<style type="text/css">
+			.mui-bar-nav {
+				display: flex;
+				align-items: center;
+			}
+			
+			#keywords {
+				margin: 0 5px;
+			}
+			
+			.mui-table-view:before,
+			.mui-table-view:after {
+				height: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="page">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<input type="text" id="keywords" v-model="keywords" placeholder="输入起点" autofocus="autofocus">
+			</header>
+			<div class="mui-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" v-for="(item,index) in items" v-if="item.id" @tap="select(index)">
+						{{item.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 加载地图JSAPI脚本 -->
+		<script src="https://webapi.amap.com/maps?v=1.4.10&key=e0ab4a7cc4f2de9221e20568b6c11dec&plugin=AMap.Autocomplete"></script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			new Vue({
+				el: '#page',
+				data: {
+					keywords: '',
+					items: []
+				},
+				watch: {
+					keywords: function(keywords) {
+						if(keywords == "") this.items = [];
+						var _this = this;
+						AMap.plugin('AMap.Autocomplete', function() {
+							// 实例化Autocomplete
+							var autoOptions = {
+								city: '全国'
+							}
+							var autoComplete = new AMap.Autocomplete(autoOptions);
+							autoComplete.search(keywords, function(status, result) {
+								_this.items = result.tips;
+							})
+						})
+					}
+				},
+				methods: {
+					select: function(index) {
+						localStorage.setItem("origin_location_lng", this.items[index].location.lng);
+						console.log(localStorage.getItem("origin_location_lng"))
+						localStorage.setItem("origin_location_lat", this.items[index].location.lat);
+						console.log(localStorage.getItem("origin_location_lat"))
+
+						console.log(this.items[index].name)
+						localStorage.setItem("origin_address", this.items[index].name);
+						
+						plus.webview.currentWebview().close();
+						var mapPage = plus.webview.getWebviewById('map');
+						mui.fire(mapPage, 'show', null);
+						mapPage.show('slide-in-right');
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

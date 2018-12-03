@@ -1,0 +1,143 @@
+.mui-scroll-wrapper{
+	margin: 0;
+}
+
+/*list列表*/
+
+.lists {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	list-style: none;
+	padding: 0 0.8rem;
+	margin: 0;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 6rem;
+	position: relative;
+	/*background-color: #123132;*/
+}
+
+.list:before {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+
+.listitem {
+	width: 100%;
+	height: 4.4rem;
+}
+
+.listleft {
+	display: inline-block;
+	width: 4.4rem;
+	height: 4.4rem;
+	border-radius: 6px;
+	margin-right: 1rem;
+	float: left;
+}
+
+.listcenter {
+	position: absolute;
+	left: 5.4rem;
+	right: 7rem;
+	width: auto;
+	height: 4.4rem;
+}
+
+.listcenter.msg {
+	position: absolute;
+	left: 5.4rem;
+	right: 1rem;
+	width: auto;
+	height: 4.4rem;
+}
+
+.listcenter .top {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	font-size: 1.2rem;
+}
+
+.listcenter .top .name {
+	max-width: 90%;
+	margin-right: 0.5rem;
+	font-size: 1.2rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.listcenter .top img.icon {
+	display: inline-block;
+	width: 0.8rem;
+	height: 1rem;
+}
+
+.listcenter .middle {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	/*font-size: 1rem;*/
+	/*background-color: #213342;*/
+}
+
+.listcenter .middle img {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.4rem;
+}
+
+.listcenter .bottom {
+	display: inline-block;
+	width: 100%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	color: #888888;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.listright {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 6rem;
+	height: 4.4rem;
+	float: right;
+}
+
+.listright button {
+	width: 6rem;
+	height: 2.5rem;
+	font-size: 1rem;
+	color: #999999;
+	border: 0.13rem solid #A8A8A8;
+	border-radius: 100px;
+}
+
+.listright button.active {
+	width: 6rem;
+	height: 2.5rem;
+	font-size: 1rem;
+	color: #4EA3F9;
+	border: 0.13rem solid #4EA3F9;
+	border-radius: 100px;
+}

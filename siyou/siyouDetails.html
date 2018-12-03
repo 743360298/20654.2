@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/animate.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../css/map.css" /> -->
+  <link rel="stylesheet" href="../css/siyouDetails.css">
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/public.js"></script>
+   <style>
+      .mui-bar-nav.mui-bar .mui-icon{
+        color:#000 ;
+      }
+      .mui-bar-nav.mui-bar .mui-icon{
+        margin-left: -0.3rem ;
+      }
+      html{
+        background-color: #f7f7f7;
+      }
+      body{
+        background-color: #f7f7f7;
+      }
+  </style>
+</head>
+<body>
+    <header id="header" class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">详情资料</h1>
+      <button class="setBtn  mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-right headImg2">
+          <img src="../images/mipmap-xhdpi/icon_set.png" alt="">
+        </button>
+        <a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <!-- <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left headImg">
+        <img src="../images/00.png" alt="">
+      </button> -->
+    </header>
+
+    <div class="mui-content">        
+      <div class="infoDetail">
+          <div class="infoImg">
+              <img src="../images/00.png" alt="">
+              <div class="infoTxt">
+                <div class="userInfo">
+                    <span id="infoName">滑稽</span>
+                    <img src="../images/mipmap-xhdpi/icon_sex_girl.png" alt="">
+                </div>
+                <div class="positioning">
+                    <span>20岁</span>
+                    <span>水瓶座</span>
+                    <span>广东-广州</span>
+                    <!-- 点赞 -->
+                    <div class="giveLike">
+                      <img class="giveLikeImg giveLikeImg2" src="../images/mipmap-xhdpi/icon_good.png" alt="">
+                      <img class="giveLikeImg " src="../images/mipmap-xhdpi/like.png" alt="">
+                      <span class="giveLikeSpan ">2</span>
+                    </div>
+                </div>
+                <span>路线相似：99%</span>
+              </div>
+          </div>
+      </div>
+
+      <!-- 个性签名 -->
+      <div class="individuality">
+          <span>个性签名</span>
+          <span id="signature">猫届第一美</span>
+        </div>
+    </div>
+      <!-- 备注名字 -->
+      <div class="note">
+          <div class="individuality dataSet">
+              <span>设置备注名字</span>
+              <span class="mui-icon mui-icon-arrowright"></span>
+          </div>
+          <!-- 信用分 -->
+          <div class="individuality ">
+              <span>信用分</span>
+              <span id="credit">100</span>
+          </div>
+      </div>
+
+      <!-- 个人动态 -->
+      <div class="individuality dynamic">
+        <span>个人动态</span>
+        <ul class="dynamicList">
+          <li><img src="../images/12-1.jpg" alt=""></li>
+          <li><img src="../images/12-1.jpg" alt=""></li>
+          <li><img src="../images/12-1.jpg" alt=""></li>
+          <li><img src="../images/12-1.jpg" alt=""></li>
+        </ul>
+        <span class="mui-icon mui-icon-arrowright"></span>
+      </div>
+
+      <!-- 地图 -->
+      <div class="control" v-cloak>
+        <div id="container"></div>
+        <script src="https://webapi.amap.com/maps?v=1.4.10&key=e21475127b4797b53b68350988df29cc "></script>
+        <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+        <script>
+          var map = map = new AMap.Map('container', {
+              resizeEnable: true
+          });
+          
+          map.on("complete", function(){
+             log.success("地图加载完成！");  
+          });
+        </script>
+      </div>
+
+      <!-- 线路tab -->
+      <div class="lineBox">
+        <div class="lineTab lineTab2">
+          <span>我的路线：驾车</span>
+        </div>
+        <div class="lineTab ">
+          <span>对方路线：驾车</span>
+        </div>
+      </div>
+
+      <!-- 添加好友 -->
+      <div class="addFriends">
+          <button type="button" id="addFriendsBtn" class="mui-btn mui-btn-primary">添加好友</button>
+      </div>
+
+
+      
+    <!-- 弹框 -->
+    <div class="bouncedSiyou">
+      <ul class="bouncedList">
+        <li>只看女生</li>
+        <li>只看男生</li>
+        <li>查看全部</li>
+        <li>按路线相似度排行</li>
+        <li>按距离排序</li>
+        <li class="cancel">取消</li>
+      </ul>
+    </div>
+
+    <!-- 添加好友弹框 -->
+    <div class="addFriendBounced">
+      <p>添加好友验证</p>
+      <p>你需要发送验证申请，等待对方通过</p>
+      <form class="mui-input-group">
+          <div class="mui-input-row">
+            <input id="sendInput" type="text" class="mui-input-clear" placeholder="二哈">
+            <span id="deleteSpanBtn" class="mui-icon mui-icon-clear mui-hidden"></span>
+          </div>
+          <div id="sendBtn">发送</div>
+      </form>
+    </div>
+
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+
+<script>
+// 申请添加好友
+$('#addFriendsBtn').on('click',function () {
+  console.log('按钮事件');
+  $('.addFriendBounced').show(200)
+  $('.mui-active').show()
+  $(this).addClass('appliedBtn')
+  $(this).addClass('mui-btn-primary')
+  
+})
+$('#sendBtn').on('click',function () {
+  $('.addFriendBounced').hide(200)
+  $('.mui-active').hide()
+})
+
+
+// tab
+$('.lineTab').on('click',function () {
+  $('.lineTab').toggleClass('lineTab2')
+})
+
+
+
+// 跳转到修改备注dataSet
+$('.dataSet').on('click',function () {
+  window.location.href = "./dataSet.html";
+})
+
+
+
+
+
+
+
+
+
+//  弹框1
+ $('.setBtn').on('click',function () {
+    $('.mui-active').show()
+    $('.bouncedSiyou').slideDown(200)
+  })
+  $('.mui-active').on('click',function () {
+    $('.mui-active').hide()
+    $('.bouncedSiyou').slideUp(200)
+    $('.addFriendBounced').hide(200)
+  })
+  $('.cancel').on('click',function () {
+    $('.mui-active').hide()
+    $('.bouncedSiyou').slideUp(200)
+  })
+
+</script>
+
+
+<!-- 加载地图JSAPI脚本 -->
+<script src="https://webapi.amap.com/maps?v=1.4.10&key=e0ab4a7cc4f2de9221e20568b6c11dec"></script>
+<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mui.min.js"></script>
+

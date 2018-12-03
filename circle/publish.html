@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <link rel="stylesheet" href="../css/publish.css">
+  <script src="../js/public.js"></script>
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/mui.min.js"></script>
+</head>
+<body>
+    <header id="header" class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">发布动态</h1>
+      <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-right ">
+          发布
+        </button>
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">取消</a>
+      <!-- <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left ">
+        取消
+      </button> -->
+    </header>
+
+    <div class="mui-content">
+        <!-- emmmmmmm...我来发布新动态啦~ -->
+        <div class="mui-input-row" style="margin: 10px 0;">
+            <textarea id="textarea" rows="5" placeholder="分享新动态..."></textarea>
+        </div>
+
+        <!-- 上传图片 -->
+        <div class="AddPhotos">
+          <ul class="AddPhotosList">
+            <li class="default">
+              <div>
+                  <img src="../images/mipmap-xhdpi/icon_camera_edit.png" alt="">
+                  <span>照片/小视频</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 添加位置 -->
+        <div class="publishGPS">
+          <span>添加位置</span>
+          <span class=" mui-pull-right mui-icon mui-icon-arrowright"></span>
+        </div>
+
+
+
+    </div>
+
+   
+      
+    <!-- 弹框 -->
+    <div class="phoneBounced">
+      <ul class="chooseList">
+        <li class="photograph">拍照</li>
+        <li class="PhotoAlbum">从手机相册选择</li>
+        <li class="cancel">取消</li>
+      </ul>
+    </div>
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+
+<script>
+
+  // 上传图片
+  $('.default').on('click',function () {
+    console.log('上传图片');
+    $('.mui-active').show()
+    $('.phoneBounced').slideDown(200)
+  })
+  $('.mui-active').on('click',function () {
+    $('.mui-active').hide()
+    $('.phoneBounced').slideUp(200)
+  })
+  $('.cancel').on('click',function () {
+    $('.mui-active').hide()
+    $('.phoneBounced').slideUp(200)
+  })
+
+
+
+
+</script>

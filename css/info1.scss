@@ -1,0 +1,266 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#header{
+  background-color: #fff;
+}
+.headImg{
+  padding: 0.1rem 0 !important;
+  img{
+    height: 100%;
+    border-radius: 0.1rem ;
+    display: flex;
+    align-items: center;
+  }
+}
+.headImg2{
+    img{
+      width: 0.33rem ;
+      display: flex;
+      align-items: center;
+   }
+}
+.mui-title{
+  font-size: 0.34rem;
+}
+img{
+  margin: 0 ;
+  padding: 0;
+}
+.mui-bar-nav{
+  box-shadow: 0 0 0 #000;
+  border: 0;
+  border-bottom: 1px solid rgba(220,220,220,1);
+  // box-shadow:0px 1px 7px 0px rgba(220,220,220,1);
+}
+
+ul{
+  margin: 0 ;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+
+.infoList{
+  width: 100%;
+  li{
+    width: 100%;
+    position: relative;
+    a{
+      background-color: #fff;
+      padding: 0.2rem 0.24rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #DCDCDC;
+      .infoImg{
+        display: flex;
+        img{
+          border-radius: 0.1rem ;
+          width: 1.1rem;
+          height: 1.1rem;
+          margin-right: 0.24rem;
+        }
+        .infoTxt{
+          .userInfo{
+            img{
+              width: 0.21rem;
+              height: 0.24rem;
+            }
+          }
+          #infoName{
+            color: #333;
+            font-size: 0.3rem;
+            line-height: initial;
+          }
+          .positioning{
+            line-height: initial;
+            margin: 0.04rem 0 ;
+            img{
+              height: 0.24rem;
+              width: 0.24rem;
+              margin: 0;
+            }
+            span{
+              color: #333333;
+              font-size: 0.24rem;
+            }
+          }
+          >span{
+            color: #828282;
+            font-size: 0.26rem;
+            line-height: initial;
+          }
+        }
+      }
+      .addBtn{
+        width: 1.5rem;
+        height: 0.6rem;
+        border-radius: 0.6rem;
+        font-size: 0.24rem;
+        text-align: center;
+      }
+      .appliedBtn{
+        width: 1.5rem;
+        height: 0.6rem;
+        border-radius: 0.6rem;
+        font-size: 0.24rem;
+        text-align: center;
+        border: 1px solid #4EA3F9;
+        color: #4EA3F9;
+      }
+    }
+  }
+}
+
+body{
+  background-color: #eaeaea;
+}
+#footer{
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 0.98rem ;
+  width: 100%;
+  .footerList{
+    display: flex;
+    li{
+      width: 33.33%;
+      .footActive{
+        span{
+          color: #4EA3F9;
+        }
+      }
+      a{
+        padding: 0.12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img{
+          width: 0.45rem;
+          height: 0.45rem;
+          margin: 0 auto;
+        }
+        span{
+          text-align: center;
+          line-height: initial;
+          color: #333;
+          font-size: 0.2rem;
+        }
+      }
+    }
+  }
+}
+// 左滑删除
+.h_left{
+  transform: translateX(-2rem);
+}
+// .h_del{
+//   position: absolute;
+//   top: 0;
+//   right: -2rem;
+//   width: 2rem;
+//   height: 1.5rem;
+//   background-color: #E64240;
+//   color: #FFFFFF; 
+//   font-size: 0.34rem;
+//   line-height:1.5rem;
+//   text-align: center;
+// }
+
+
+// 弹框
+.bouncedSiyou{
+  display: none;
+  z-index: 99999;
+  position: fixed;
+  width: 100%;
+  left: 0 ;
+  bottom: 0 ;
+  .bouncedList{
+    li{
+      background-color: #fff;
+      height: 1rem;
+      line-height: 1rem ;
+      text-align: center;
+      font-size: 0.32rem ;
+    }
+    .cancel{
+      margin-top: 0.2rem ;
+    }
+  }
+}
+
+// t添加好友弹框
+.addFriendBounced{
+  width: 5.4rem ;
+  height: 4.04rem;
+  background-color: #fff;
+  padding: 0.5rem 0.7rem  0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50% ;
+  left: 50%; 
+  transform:  translate(-50% , -50% );
+  display: none ;
+  z-index: 99999 ;
+  p:first-child{
+    color: #333333;
+    font-size: 0.32rem ;
+    text-align: center;
+    line-height: initial;
+  }
+  p:nth-child(2){
+    line-height: initial;
+    text-align: center;
+    color: #828282;
+    font-size: 0.24rem ;
+    margin: 0.28rem 0 ;
+  }
+   #sendInput{
+     width: 4rem;
+     height: 0.8rem ;
+     font-size: 0.28rem ;
+     color: #333333;
+     position: relative;
+     background:rgba(247,247,247,1);
+   }
+   #deleteSpanBtn{
+    position: absolute;
+    top: 50% ;
+    transform: translate( 0 ,-50% );
+    margin: 0;
+    padding: 0;
+   }
+   #sendBtn{
+     margin-top: 0.3rem ;
+     width: 4rem;
+     height: 0.8rem ;
+     font-size: 0.28rem ;
+     color: #fff;
+     background-color: #4EA3F9;
+     border-radius: 0.04rem ;
+     line-height: 0.8rem ;
+     text-align: center;
+   }
+}
+
+.mui-input-group .mui-input-row{
+  height: 0.8rem ;
+  font-size: 0.28rem ;
+}
+.mui-icon-clear:before, .mui-icon-close-filled:before{
+  line-height: 0.8rem ;
+  font-size: 0.28rem ;
+}
+.mui-input-row .mui-input-clear~.mui-icon-clear{
+  height: initial;
+}
+.mui-input-group .mui-input-row:after{
+  height: 0 ;
+}

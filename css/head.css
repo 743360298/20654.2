@@ -1,0 +1,50 @@
+.head{
+  height: 0.88rem;
+  position: relative;
+}
+.mui-bar{
+  height: 0.88rem;
+  padding-right: 0.24rem;
+  padding-left: 0.24rem;
+}
+.mui-bar .mui-title{
+  display: block;
+  height: 0.88rem !important;
+  line-height:  0.88rem !important;
+  font-size: 0.33rem;
+}
+.mui-bar .mui-btn-link{
+  height: 0.88rem;
+  line-height: 0.88rem;
+}
+.mui-bar .mui-icon{
+  font-size: 0.33rem;
+}
+.mui-bar-nav~.mui-content{
+  padding-top: 0.88rem !important;
+}
+.mui-icon-back:before, .mui-icon-left-nav:before{
+  font-size: 0.43rem;
+}
+.mui-bar-nav.mui-bar .mui-icon{
+  height: 0.88rem;
+  line-height: 0.88rem;
+  font-size: 0.33rem;
+}
+.mui-bar .mui-icon{
+  margin: 0;
+  padding: 0;
+}
+.mui-icon-arrowright:before{
+  font-size: 0.33rem;
+}
+.mui-content{
+  background-color:  initial;
+}
+.mui-bar .mui-btn-nav.mui-pull-left{
+  margin-left: 0;
+  padding-left: 4px;
+}
+.mui-bar .mui-btn-nav.mui-pull-right{
+  margin: 0;
+}

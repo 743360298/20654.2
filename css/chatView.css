@@ -1,0 +1,157 @@
+#subnav {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 4rem;
+	padding: 0;
+	background-color: #EDEEF2;
+	/*border: 1px solid blue;*/
+}
+
+.subnavdiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 12%;
+	height: 100%;
+	/*border: 1px solid blue;*/
+}
+
+.subnavdiv.sound {
+	margin: 0 0.2rem;
+}
+
+.subnavdiv img {
+	width: 2.2rem;
+	height: 2.2rem;
+}
+
+.subnavdiv span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.6rem;
+	height: 2.2rem;
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+#input {
+	width: 60%;
+	/*height: auto;*/
+	min-height: 2.6rem;
+	max-height: 3.6rem;
+	overflow-y: scroll;
+	padding: 0.6rem;
+	font-size: 1.2rem;
+	border-radius: 8px;
+	background-color: #fff;
+	/*border: 1px solid red;*/
+}
+
+#say{
+	width: 60%;
+	height: 2.6rem;
+	line-height: 2.6rem;
+	font-size: 1.2rem;
+	color: black;
+	text-align: center;
+	border-radius: 8px;
+	background-color: #EDEEF2;
+	border: 1px solid #ccc;
+}
+
+.mui-table-view {
+	background-color: #F7F7F7;
+}
+
+.mui-table-view:before,
+.mui-table-view:after {
+	height: 0;
+}
+
+.mui-table-view-cell:before,
+.mui-table-view-cell:after {
+	height: 0;
+}
+
+.msg {
+	min-height: 2rem;
+	padding: 0.5rem;
+	border-radius: 6px;
+	background-color: #fff;
+	border: 1px solid black;
+}
+
+.chatdiv {
+	width: 100%;
+	height: auto;
+	padding: 1rem;
+	/*background-color: #ccc;*/
+}
+
+.chatdiv:before,.chatdiv:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.chatdiv .usericon {
+	width: 3.2rem;
+	height: auto;
+	margin-right: 0.8rem;
+	float: left;
+}
+
+.chatdiv .usericon img {
+	width: 3.2rem;
+	height: 3.2rem;
+}
+
+.chatdiv .chat-bubble {
+	max-width: 16rem;
+	word-wrap: break-word;
+	padding: 0.8rem;
+	font-size: 1.2rem;
+	border-radius: 6px;
+	background-color: #fff;
+	/*border: 1px solid #ccc;*/
+	float: left;
+}
+
+.chatdiv .chat-bubble:before {
+	content:'';
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 1.8rem;
+	left: 3.9rem;
+	border: 0.6rem solid ;
+	border-color: transparent  #fff transparent transparent;
+	font-size: 0;
+}
+
+/*emoji表情*/
+
+.emojiarea {
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	flex-wrap: wrap;
+	max-height: 9rem;
+	background-color: #fff;
+	/*z-index: 1000;*/
+}
+
+.emojidiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+}
+
+.emoji {
+	width: 1rem;
+	height: 1rem;
+}

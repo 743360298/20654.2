@@ -1,0 +1,349 @@
+html{
+  background:rgba(247,247,247,1);
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+li{
+  margin: 0;
+  padding: 0;
+}
+.circleTab{
+  background-color: #fff;
+  height: 0.76rem ;
+  display: flex;
+  span{
+    font-size: 0.3rem ;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    line-height: 0.76rem;
+  }
+  .circleTabActive{
+    color: #4EA3F9;
+    border-bottom:  0.04rem solid #4EA3F9;
+  }
+}
+.headImg2{
+  .headImgTab{
+    display: none;
+  }
+  .headImgTab2{
+    display: block;
+  }
+}
+
+.circleBox{
+  display: none ;
+}
+.circleBoxTab{
+  display: block;
+}
+.circleList{
+  height: 100%;
+  width: 100%;
+  margin-top: 0.3rem ;
+  li{
+    height: 100%;
+    width: 100%;
+    padding: 0.3rem  0.24rem  ;
+    background-color: #fff;
+    border-bottom:  1px solid  #DCDCDC;
+    a{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      .circleImg{
+        width: 2.26rem ;
+        height: 2.26rem ;
+        margin-right: 0.24rem ;
+        img{
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .circleTxt{
+        // width: 100%;
+        display: flex;
+        flex-direction: column ;
+        justify-content: space-between;
+        .circleTxtTop{
+          display: flex;
+          flex-direction: column;
+          span:first-child{
+            color: #333333;
+            font-size: 0.3rem ;
+            font-weight: 600;
+            line-height: initial;
+          }
+          span:nth-child(2){
+            font-weight:400;
+            color: #333333;
+            font-size: 0.28rem ;
+            margin: 0.2rem 0;
+            line-height: initial;
+          }
+          span:nth-child(3){
+            color: #828282;
+            font-size: 0.26rem ;
+            line-height: initial;
+            i{
+              font-style: normal;
+              color: #4EA3F9;
+            }
+          }
+        }
+        .circle-positioning{
+          color: #828282;
+          font-size: 0.28rem ;
+          display: flex ;
+          img{
+            width: 0.3rem ;
+            height: 0.3rem ;
+            margin-right: 0.1rem ;
+          }
+          span{
+            line-height: initial;
+          }
+        }
+      }
+    }
+  }
+}
+.mui-bar-nav~.mui-content{
+  padding-top: 0.88rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.circle-GPS{
+  width: 1rem ;
+  height: 1rem ;
+  border-radius: 100% ;
+  box-shadow: 0 0 20px  #4EA3F9;
+  position: fixed;
+  right: 0.24rem ;
+  bottom: 1.7rem ;
+  background: url('../images/gps-1.jpg');
+  span{
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 100%;
+    background-color: #4EA3F9;
+    opacity: 0.5;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50% , -50%)
+  }
+}
+
+
+// 动态圈
+.circleBox{
+  margin-top: 0.3rem ;
+}
+.dynamicList{
+  background-color: #fff;
+  >li{
+    padding: 0.3rem 0.24rem ;
+    a{
+      .friendinfo{
+        height: 100%;
+        display: flex;
+        margin-bottom: 0.2rem ;
+        .friendImg{
+          width: 0.8rem ;
+          height: 0.8rem;
+          margin-right: 0.1rem ;
+          border-radius: 10px;
+        }
+        .friendTxt{
+          width: 100% ;
+          height: 0.8rem;
+          display: flex ;
+          flex-direction: column;
+          justify-content: space-around; 
+          .friendName{
+            color:#333333;
+            font-size: 0.3rem ;
+          }
+          .friendTime{
+            color: #828282;
+            font-size: 0.24rem ;
+          }
+        }
+      }
+      .friendTalk{
+        >p{
+          margin: 0;
+          padding-bottom: 0.15rem ;
+          color: #333333;
+          font-size: 0.3rem ;
+          line-height: initial;
+        }
+        .TalkImgList1{
+          width: 100%;
+          display: flex;
+          li{
+            width: 4.5rem ;
+            height: 4.5rem ;
+            margin-bottom: 0.12rem ;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+        // 两张图片
+        .TalkImgList2{
+          width: 100%;
+          display: flex;
+          li{
+            width: 3.45rem ;
+            height: 3.45rem ;
+            margin: 0 0.12rem 0.12rem 0;
+            img{
+              width: 100%;
+             height: 100%;
+            }
+          }
+          li:last-child{
+            margin: 0 0 0.12rem 0;
+          }
+        }
+        // 三张以上
+        .TalkImgList3{
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          li{
+            width: 2.26rem ;
+            height: 2.26rem ;
+            // padding-right: 0.1rem ;
+            // padding-bottom: 0.1rem ;
+            margin: 0 0.12rem 0.12rem 0;
+            img{
+             width: 100%;
+             height: 100%;
+            }
+          }
+          li:nth-child(3n){
+            // padding-right: 0;
+            margin: 0 0 0.12rem 0;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+// 评论
+.commentBox{
+  .Point{
+    margin-top: 0.1rem ;
+    display: flex;
+    justify-content: flex-end; 
+    .praise{
+      display: flex;
+      span{
+        color: #333333;
+        font-size: 0.28rem ;
+      }
+      .likeBtn{
+        display: none ;
+        width: 0.28rem ;
+        height: 0.28rem ;
+        margin-right: 0.1rem ;
+      }
+      .likeBtn2{
+        display: block ;
+      }
+      .likeSpan{
+        color: #4EA3F9;
+      }
+    }
+    .comment{
+      margin-left: 0.4rem ;
+      display: flex;
+      span{
+        color: #333333;
+        font-size: 0.28rem ;
+      }
+      .commentImgBtn{
+        margin-right: 0.1rem ;
+        width: 0.3rem ;
+        height: 0.28rem ;
+      }
+    }
+  }
+}
+// <!-- 有谁点了赞 -->
+.friendPraise{
+  margin-top: 0.1rem ;
+  background-color: #f7f7f7;
+  color: #333 ;
+  font-size: 0.3rem ;
+  padding:  0.2rem ;
+  .friendLike{
+    width: 0.28rem;
+    height: 0.28rem;
+  }
+  >span{
+    color: #4EA3F9;
+    margin-left: 0.15rem ;
+    line-height: initial;
+  }
+}
+
+// 评论
+.friendComment{
+  background-color: #f7f7f7;
+  padding:0 0.2rem ;
+  border-top: 1px solid #dcdcdc ;
+  .commentList{
+    li{
+      padding-top:0.1rem ;
+
+      // margin-top: 0.1rem ;
+      span{
+        font-size: 0.3rem ;
+        line-height: initial;
+      }
+      span:nth-child(2n){
+        color: #333;
+      }
+      span:nth-child(2n-1){
+        color: #4EA3F9;
+      }
+    }
+    li:last-child{
+      padding-bottom:0.1rem ;
+    }
+  }
+}
+
+
+
+// 弹框
+.circleBounced{
+  display: none;
+  z-index: 99999;
+  position: fixed;
+  width: 100%;
+  left: 0 ;
+  bottom: 0 ;
+  .bouncedList{
+    li{
+      background-color: #fff;
+      height: 1rem;
+      line-height: 1rem ;
+      text-align: center;
+      font-size: 0.32rem ;
+    }
+    .cancel{
+      margin-top: 0.2rem ;
+    }
+  }
+}

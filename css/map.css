@@ -1,0 +1,163 @@
+html,
+body,
+#container {
+	width: 100%;
+	height: 100%;
+}
+
+.control {
+	position: absolute;
+	bottom: 0;
+	left: 2%;
+	width: 96%;
+	height: auto;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: #fff;
+	z-index: 1000;
+}
+
+.ways {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 88%;
+	height: 4rem;
+	margin: 1.1rem auto;
+	/*background-color: #eee;*/
+}
+
+.ways div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 4.6rem;
+	height: 2.2rem;
+	margin: 0 auto;
+	background-color: #EDF6FE;
+	border-radius: 5px;
+}
+
+.ways div.active {
+	width: 4.8rem;
+	height: 2.8rem;
+	margin: 0 auto;
+	background-color: #4EA3F9;
+}
+
+.ways div img{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.location {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 88%;
+	height: 2rem;
+	margin: 0 auto;
+	margin-top: 1.2rem;
+	/*background-color: #ccc;*/
+}
+
+.location .locationimg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.3rem;
+	height: 1.3rem;
+	margin-right: 0.3rem;
+	/*background-color: #798465;*/
+}
+
+.location .locationtext {
+	display: inline-block;
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	padding-left: 0.6rem;
+	padding-bottom: 0.4rem;
+	font-size: 1.18rem;
+	border-bottom: 1px solid #eee;
+	/*background-color: #478456;*/
+}
+
+.plans {
+	display: flex;
+	width: 100%;
+	height: 5rem;
+	margin: 0 auto;
+	margin-top: 1rem;
+	/*background-color: #CCCCCC;*/
+}
+
+.plans div {
+	width: 33%;
+	height: 100%;
+	text-align: center;
+	padding: 2px;
+	/*background-color: #EDF6FE;*/
+}
+
+.plans div.active {
+	width: 33%;
+	height: 100%;
+	text-align: center;
+	background-color: #EDF6FE;
+	color: #4EA3F9;
+}
+
+.plans div .plantype{
+	display: block;
+	width: 100%;
+	height: 1.5rem;
+	font-size: 0.8rem;
+	/*background-color: #EDF6FE;*/
+}
+
+.plans div .duration{
+	display: block;
+	width: 100%;
+	height: 1.5rem;
+	font-size: 1.2rem;
+	/*background-color: #EDF6FE;*/
+}
+
+.plans div .distance{
+	display: block;
+	width: 100%;
+	height: 1.5rem;
+	font-size: 0.8rem;
+	/*background-color: #EDF6FE;*/
+}
+
+.btndiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 7rem;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	/*background-color: #D0E3FE;*/
+}
+
+.subbtn {
+	width: 45%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*background-color: #123123;*/
+}
+
+.subbtn button {
+	width: 7.6rem;
+	height: 3.2rem;
+	background-color: #4EA3F9;
+	color: #fff;
+	font-size: 1.1rem;
+	border-radius: 5px;
+	border: none;
+}

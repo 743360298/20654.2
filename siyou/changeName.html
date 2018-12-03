@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/animate.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../css/map.css" /> -->
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/public.js"></script>
+   <style>
+      .mui-bar-nav.mui-bar .mui-icon{
+        color:#000 ;
+      }
+      .mui-bar-nav.mui-bar .mui-icon{
+        margin-left: -0.3rem ;
+      }
+      html{
+        background-color: #f7f7f7;
+      }
+      body{
+        background-color: #f7f7f7;
+      }
+      .dataSet{
+        /* margin-top: 0.3rem ; */
+        padding:0.24rem 0;
+        height: 1rem ;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+      }
+      .mui-input-group{
+        height: 1rem ;
+        width: 100% !important;
+      } 
+      #dataSetInput{
+        padding: 0.24rem ;
+        height: 100%;
+        color: #333333;
+        font-size: 0.28rem ;
+        /* padding: 0.24rem ; */
+        display: flex;
+        align-items: center;
+      }
+      #deleteSpanBtn{
+        height: 100%;
+      }
+      .mui-input-group:before{
+        height: 0 ;
+      }
+      .mui-input-group:after{
+        height: 0 ;
+      }
+      .mui-input-group .mui-input-row{
+        height: 1rem ;
+      }
+      .mui-input-row .mui-input-clear~.mui-icon-clear{
+        font-size: 0.3rem ;
+        top: 50%;
+        right: 0.24rem ;
+        transform: translate(0,-40%);
+      }
+      .mui-icon{
+        line-height: initial;
+      }
+      .cancelBtn{
+        font-size: 0.28rem !important;
+        color: #333333!important;
+      }
+      .completeBtn{
+        font-size: 0.28rem !important;
+      }
+      .mui-content .changeName{
+        padding: 0.3rem 0.24rem ;
+        font-size: 0.28rem ;
+        color: #333333;
+      }
+  </style>
+</head>
+<body>
+    <header id="header" class="mui-bar mui-bar-nav">
+			
+      <h1 class="mui-title">设置备注名</h1>
+      <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left cancelBtn">取消</button>
+      <button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right completeBtn">完成</button>
+    </header>
+
+    <div class="mui-content">        
+      <!-- 备注名字 -->
+      <div class="changeName"><span>备注名</span></div>
+      <div class="dataSet">
+          <form class="mui-input-group">
+              <div class="mui-input-row">
+                <input type="text" id="dataSetInput" class="mui-input-clear" placeholder="设置备注名">
+                <span id="deleteSpanBtn" class="mui-icon mui-icon-clear mui-hidden"></span>
+              </div>
+            </form>
+      </div>
+
+
+
+
+
+
+
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

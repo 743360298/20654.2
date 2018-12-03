@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/chatView.css" />
+	</head>
+
+	<body>
+		<div id="page" v-cloak>
+
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">{{username}}</h1>
+				<a class="mui-pull-right"><img id="set" @tap="chatSetting" src="../images/mipmap-xhdpi/icon_set.png" /></a>
+			</header>
+			<nav class="mui-bar mui-bar-tab" id="subnav">
+				<div class="subnavdiv sound" @tap="changeInputing">
+					<img v-if="inputing" id="soundbtn" src="../images/mipmap-xhdpi/icon_voice.png" />
+					<img v-else id="keyboard" @tap="showKeyboard" src="../images/mipmap-xhdpi/icon_keyboard.png" />
+				</div>
+				<div id="input" v-if="inputing" v-model="inputValue" contenteditable="true"></div>
+				<a id="say" v-else contenteditable="false">按住说话</a>
+				<div class="subnavdiv">
+					<img id="emojibtn" src="../images/mipmap-xhdpi/icon_expression.png" @tap="showEmoji" />
+				</div>
+				<div class="subnavdiv">
+					<!--<img src="../images/mipmap-xhdpi/icon_more.png" v-if="sendbtn" />-->
+					<span id="sendbtn" @tap="send">发送</span>
+				</div>
+			</nav>
+			<div class="emojiarea">
+				<div class="emojidiv" v-for="emoji in emojis">
+					<img class="emoji" :src="emoji.src" @tap="addEmoji(emoji.name)" />
+				</div>
+			</div>
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media" v-for="(object) in chatArrays">
+							<img class="mui-media-object mui-pull-left" :src="object.icon" />
+							<div class="mui-media-body msg" v-html="object.msg"><div class="arrow"></div></div>
+						</li>
+					</ul>-->
+					<div class="chatdiv" v-for="(object) in chatArrays">
+						<div class="usericon">
+							<img :src="object.icon" />
+						</div>
+						<div class="chat-bubble" v-html="object.msg"></div>
+						<!--<div class="send">
+							<div class="arrow"></div>
+						</div>-->
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+			mui.init({
+				beforeback: function() {
+					var currentPage = plus.webview.currentWebview();
+					//					currentPage.addEventListener('close', function(e) {
+					//						ws.close()
+					//					})
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			});
+			mui.plusReady(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+				});
+			})
+		</script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 初始化一个 WebSocket 对象
+			var ws = new WebSocket("ws://123.207.167.163:9010/ajaxchattest");
+			ws.onopen = function() {};
+			ws.onmessage = function(evt) {
+				var received_msg = evt.data;
+//				vm.receive(received_msg)
+			};
+			ws.onerror = function() {
+				alert("连接发生错误..." + ws.readyState);
+			};
+			ws.onclose = function() {
+				alert("连接已关闭..." + ws.readyState);
+			};
+
+			var emojis = [{
+				name: '微笑',
+				src: '../images/emoji/default/0.gif'
+			}, {
+				name: '撇嘴',
+				src: '../images/emoji/default/1.gif'
+			}, {
+				name: '好色',
+				src: '../images/emoji/default/2.gif'
+			}, {
+				name: '发呆',
+				src: '../images/emoji/default/3.gif'
+			}, {
+				name: '得意',
+				src: '../images/emoji/default/4.gif'
+			}, {
+				name: '哭',
+				src: '../images/emoji/default/5.gif'
+			}, {
+				name: '害羞',
+				src: '../images/emoji/default/6.gif'
+			}, {
+				name: '闭嘴',
+				src: '../images/emoji/default/7.gif'
+			}, {
+				name: '睡觉',
+				src: '../images/emoji/default/8.gif'
+			}, {
+				name: '大哭',
+				src: '../images/emoji/default/9.gif'
+			}, {
+				name: '恼火',
+				src: '../images/emoji/default/10.gif'
+			}, {
+				name: '发怒',
+				src: '../images/emoji/default/11.gif'
+			}, {
+				name: '调皮',
+				src: '../images/emoji/default/12.gif'
+			}, {
+				name: '呲笑',
+				src: '../images/emoji/default/13.gif'
+			}, {
+				name: '惊讶',
+				src: '../images/emoji/default/14.gif'
+			}]
+
+			var phonenumber = localStorage.getItem("phonenumber");
+			console.log(phonenumber)
+			var vm = new Vue({
+				el: '#page',
+				data: {
+					username: phonenumber,
+					chatArrays: [],
+					inputValue: '',
+					inputing: true,
+					sendbtn: true,
+					emojis: emojis
+				},
+				methods: {
+					send: function() {
+						var that = this;
+						var emojiText;
+						var inputObj = document.getElementById("input");
+						if(!inputObj.innerHTML) {
+							mui.toast("发送内容不能为空");
+							return
+						}
+						this.chatArrays.push({ //把发送的信息显示在聊天信息框
+							icon: '../images/logo.png',
+							msg: inputObj.innerHTML
+						})
+						setTimeout(function() {
+							mui('.mui-scroll-wrapper').scroll().refresh();
+							mui('.mui-scroll-wrapper').scroll().scrollToBottom(100); //100毫秒滚动到底
+						}, 100)
+						this.emojis.forEach(function(emoji) { //将表情图片替换为emoji代号再发送给后端
+							emojiText = that.nofilterEmoji(inputObj.innerHTML, emoji);
+							inputObj.innerHTML = emojiText;
+						})
+						ws.send(inputObj.innerHTML)
+						document.getElementById("input").innerHTML = "";
+						document.activeElement.blur();
+					},
+					receive: function(received_msg) {
+						var that = this;
+						var emojiHtml = received_msg;
+						this.emojis.forEach(function(emoji) { //将emoji代号替换为表情图片
+							emojiHtml = that.filterEmoji(emojiHtml, emoji);
+						})
+						this.chatArrays.push({ //把接收的信息将emoji代号替换为表情图片后显示在聊天信息框
+							icon: '../images/logo.png',
+							msg: emojiHtml
+						})
+						setTimeout(function() {
+							mui('.mui-scroll-wrapper').scroll().refresh();
+							mui('.mui-scroll-wrapper').scroll().scrollToBottom(100); //100毫秒滚动到底
+						}, 100)
+					},
+					addEmoji: function(res) {
+						var that = this;
+						var emojiHtml;
+						var inputObj = document.getElementById("input");
+						this.emojis.forEach(function(emoji) {
+							if(emoji.name == res) {
+								emojiHtml = that.filterEmoji('/' + res, emoji);
+								inputObj.innerHTML += emojiHtml; //这里会把img标签的/去掉,因为html中没有闭合
+								//alert(inputObj.innerHTML+"=inputObj.innerHTML"+emojiHtml+"=emojiHtml")
+							}
+						})
+					},
+					filterEmoji: function(input, emoji) { //将emoji代号替换为表情图片
+						var regexp = new RegExp('\\[' + emoji.name + '\\]|\\/' + emoji.name, 'gm');
+						var result = input.replace(regexp, '<img class="emoji" src="' + emoji.src + '"/>');
+						return result;
+					},
+					nofilterEmoji: function(input, emoji) { //将表情图片替换为emoji代号
+						var reg = '<img class=\"emoji\" src=\"' + emoji.src + '\">';
+						var regexp = new RegExp(reg);
+						var result = input.replace(regexp, '\/' + emoji.name);
+						return result;
+					},
+					showEmoji: function() {
+						plus.key.hideSoftKeybord();
+						mui(".mui-content")[0].marginBottom = "9rem";
+					},
+					changeInputing: function() {
+						this.inputing = !this.inputing;
+					},
+					showKeyboard: function() {
+						plus.key.showSoftKeybord();
+						var input = document.getElementById("input");
+						mui.trigger(input, 'tap');
+					},
+					chatSetting: function() {
+						mui.openWindow({
+							url: 'chatSetting.html',
+							id: 'chatSetting',
+							extras: {},
+							waiting: {
+								autoShow: false
+							}
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/user.css" />
+	</head>
+
+	<body>
+		<div id="page">
+			<h1>手机号码</h1>
+			<p class="tips">请输入正确的手机号码, 并点击继续</p>
+			<div class="inputdiv">
+				<span class="areacode">+86</span>
+				<input class="input80" type="text" name="phone" id="phone" />
+			</div>
+			<button class="btn" disabled="disabled">继续</button>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function() {
+
+				mui(".btn")[0].addEventListener('tap', function() {
+					var phone = mui("#phone")[0].value;
+					console.log(phone)
+					console.log(url+'hyapi/member/checkmobile')
+					mui.ajax(url+'hyapi/member/checkmobile', {
+						data: {
+							common_param: '{"mobile":' + phone + '}'
+						},
+						type: 'post',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(JSON.stringify(successdata))
+							if(successdata.errcode == 0 && successdata.data == 1) { //手机号已注册
+								mui.openWindow({
+									url: 'login2.html',
+									id: 'login2',
+									extras: {
+										phonenumber: phone
+									},
+									waiting: {
+										autoShow: false
+									}
+								})
+							} else if(successdata.errcode == 0 && successdata.data == 0) { //手机号未注册
+								mui.openWindow({
+									url: 'reg.html',
+									id: 'reg',
+									extras: { //页面间传递参数
+										phonenumber: phone
+									},
+									waiting: {
+										autoShow: false
+									}
+								})
+							} else{
+								mui.toast("请输入正确的手机号")
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+				})
+				//监听手机号输入
+				mui("#phone")[0].addEventListener('input', function() {
+					mui(".btn")[0].disabled = mui("#phone")[0].value ? false : true;
+				})
+
+				var backButtonPress = 0;
+				mui.back = function(event) {
+					backButtonPress++;
+					if(backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};
+			})
+		</script>
+	</body>
+
+</html>

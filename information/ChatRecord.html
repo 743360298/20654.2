@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <link rel="stylesheet" href="../css/info.css">
+  <link rel="stylesheet" href="../css/ChatRecord.css">
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/public.js"></script>
+  <!-- <script src="../js/delete.js"></script> -->
+   <style>
+      .mui-bar .mui-btn-nav.mui-pull-left .mui-icon-left-nav{
+        color:#333 ;
+      }
+      html{
+        background-color: #f7f7f7;
+      }
+      body{
+        background-color: #f7f7f7;
+      }
+  </style>
+</head>
+<body>
+
+
+    <header id="header" class="mui-bar mui-bar-nav">
+			
+        <h1 class="mui-title">二哈</h1>
+      <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-left-nav"></span></button>
+      <button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right headImg2">
+        <img src="../images/mipmap-xhdpi/icon_set.png" alt="">
+      </button>
+    </header>
+    
+
+    <div class="mui-content">
+
+      <div class="ChatRecord">
+        <ul class="ChatRecordList">
+          <li class="yoursaid">
+            <img src="../images/12-1.jpg" alt="">
+            <div class="yoursaidTxt">
+              你好么？？？
+            </div>
+          </li>
+          <li class="mysaid">
+            <div class="mysaidTxt">
+              你好么？？？
+            </div>
+            <img src="../images/00.png" alt="">
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <footer id="footerInput">
+        <div class="inputMethod">
+          <div class="switch">
+            <img class="voice keyboard" src="../images/mipmap-xhdpi/icon_keyboard.png" alt="">
+            <img class="voice" src="../images/mipmap-xhdpi/icon_voice.png" alt="">
+          </div>
+          <div class="clickVoice">
+            <span>按住说话</span>
+          </div>
+          <div class="clickVoice clickKeyboard">
+            <input type="text" id="inputKeyboard">
+          </div>
+          <div  class="expression"><img src="../images/mipmap-xhdpi/icon_expression.png" alt=""></div>
+          <div  class="more "><img src="../images/mipmap-xhdpi/icon_more.png" alt="">
+            <div  class=" sendBtn"><span>发送</span></div>
+          </div>
+          
+
+        </div>
+
+
+        <ul class="moreList">
+          <li>
+            <a href="javascript:;" >
+                <img src="..//images/mipmap-xhdpi/icon_photo.png" alt="">
+                <span>照片</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" >
+                <img src="..//images/mipmap-xhdpi/icon_camera.png" alt="">
+                <span>相机</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" >
+                <img src="..//images/mipmap-xhdpi/icon_location.png" alt="">
+                <span>位置</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" >
+                <img src="..//images/mipmap-xhdpi/icon_route.png" alt="">
+                <span>线路图</span>
+            </a>
+          </li>
+        </ul>
+      </footer>
+      
+    <!-- 弹框 -->
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+<script>
+  $('.headImg2').on('click',function(){
+    window.location.href = "./ChatSettings.html";
+  })
+
+  // 切换输入法
+  $('.voice').on('click',function(){
+    $('.voice').toggleClass('keyboard')
+    $('.clickVoice').toggleClass('clickKeyboard')
+  })
+
+  // 显示更多
+  $('.more').on('click',function(){
+    $('.moreList').slideDown(200)
+    if( $('.moreList').css("display:none") ){
+        $('.more').on('click',function(){
+        $('.moreList').slideUp(200)
+      })
+    }
+  })
+
+
+
+// 判断 文本 显示发送按钮
+$(function () {
+  $('#inputKeyboard').on('keyup',function () {
+  var myinfo = $('#inputKeyboard').val();
+  if (myinfo.length > 0) {
+     $('.sendBtn').fadeIn(100);
+   } else {
+     $('.sendBtn').fadeOut(100);
+   }
+  })
+})
+
+
+      // 发送消息 
+          $(function () {
+
+            $('.sendBtn').click(function (event) {
+                event.stopPropagation()
+                var myinfo = $('#inputKeyboard').val();
+                // myinfo = $.trim(myinfo);
+
+                if (myinfo.length > 0) {
+                  $('.sendBtn').show(200);
+                } else if (myinfo == '') {
+                  mui.toast('内容不能为空哦');
+                    return;
+                } else if (myinfo.length >= 300) {
+                  mui.toast('内容太长啦');
+                    return;
+                } 
+                var tag = $('<li class="mysaid"><div class="mysaidTxt">' + myinfo + ' </div><img src="../images/00.png" alt=""></li>');
+
+                $('.ChatRecordList').append(tag);
+                // $('.ChatRecordList li:eq(0)').hide().slideDown(500);
+                $('.ChatRecordList').val('');
+                $('#inputKeyboard').val("").focus(); // 清空并获得焦点
+            });
+
+        });
+
+
+</script>
+
+

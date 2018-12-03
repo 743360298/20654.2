@@ -1,0 +1,97 @@
+{
+	"user/login1.html": {
+		"refer": [
+			"user/login2.html",
+			"user/forgetpassword.html",
+			"index.html",
+			"user/reg.html"
+		],
+		"resources": []
+	},
+	"user/login2.html": {
+		"refer": [
+			"user/forgetpassword.html",
+			"map/map.html"
+		],
+		"resources": []
+	},
+	"index.html": {
+		"resources": [
+			"html/tab-webview-subpage-chat.html",
+			"html/siyou.html"
+		],
+		"refer": [
+			"html/tab-webview-subpage-chat.html",
+			"user/login1.html",
+			"html/tab-webview-subpage-contact.html",
+			"offcanvas-drag-right-plus-menu.html",
+			"html/chatView.html",
+			"sideslip-menu.html",
+			"html/siyou.html",
+			"html/quanzi.html"
+		]
+	},
+	"user/reg.html": {
+		"refer": [
+			"user/setpassword.html"
+		],
+		"resources": []
+	},
+	"user/forgetpassword.html": {
+		"refer": [
+			"user/resetpassword.html"
+		],
+		"resources": []
+	},
+	"user/resetpassword.html": {
+		"refer": [
+			"user/forgetpassword.html"
+		],
+		"resources": []
+	},
+	"user/setpassword.html": {
+		"refer": [
+			"map/map.html"
+		],
+		"resources": []
+	},
+	"map/map.html": {
+		"refer": [
+			"map/searchAddress.html",
+			"map/setOrigin_location.html",
+			"map/setDest_location.html",
+			"map/map_line.html",
+			"map/mapline.html"
+		],
+		"resources": []
+	},
+	"map/searchAddress.html": {
+		"refer": [
+			"map/map.html"
+		],
+		"resources": []
+	},
+	"sideslip-menu.html": {
+		"refer": [
+			"map/map.html",
+			"map/mapline.html",
+			"setting/userMsg.html"
+		]
+	},
+	"map/mapline.html": {
+		"refer": [
+			"map/map.html",
+			"html/siyou.html"
+		]
+	},
+	"html/chatView.html": {
+		"refer": [
+			"html/chatSetting.html"
+		]
+	},
+	"setting/userMsg.html": {
+		"refer": [
+			"setting/setNickname.html"
+		]
+	}
+}

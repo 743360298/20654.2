@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/siyou.css" />
+	</head>
+
+	<body>
+		<div id="page" v-cloak>
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-menu mui-pull-left" @tap="menu"><img id="icon" src="../images/logo.png" /></a>
+				<h1 class="mui-title">似友</h1>
+				<a class="mui-pull-right"><img id="set" src="../images/mipmap-xhdpi/icon_set.png" /></a>
+			</header>
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="lists">
+						<li class="list" v-for="item in items">
+							<div class="listitem">
+								<img class="listleft" src="../images/60x60.gif" />
+								<div class="listcenter">
+									<span class="top">
+										<span class="name">
+											{{item.nick_name}}
+										</span>
+									<img class="icon" v-if="item.sex==1" src="../images/mipmap-xhdpi/icon_sex_boy.png" />
+									<img class="icon" v-if="item.sex==0" src="../images/mipmap-xhdpi/icon_sex_girl.png" />
+									</span>
+									<span class="middle">
+										<img src="../images/mipmap-xhdpi/icon_distance.png"/>
+										<span id="distance">
+											30m
+										</span>
+									</span>
+									<span class="bottom">路线相似:<span id="similarity">{{item.similarity}}</span></span>
+								</div>
+								<div class="listright">
+									<button class="active" v-if="item.likes" @tap="addUser">添加好友</button>
+									<button class="" v-else>已申请</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init();
+
+			setInterval(function() {
+				//定时获取定位，然后发送到后端刷新似友列表
+				//定时获取定位，然后发送到后端刷新似友列表
+				//定时获取定位，然后发送到后端刷新似友列表
+				//定时获取定位，然后发送到后端刷新似友列表
+				//定时获取定位，然后发送到后端刷新似友列表
+
+				var usertoken = localStorage.getItem("token");
+				console.log(usertoken)
+				console.log(url + 'hyapi/member/getnearbyuser')
+				mui.ajax(url + 'hyapi/member/getnearbyuser', {
+					data: {
+						token: usertoken
+					},
+					type: 'get',
+					dataType: 'json',
+					success: function(successdata) {
+						console.log(JSON.stringify(successdata.data.data))
+						vm.setItems(successdata.data.data)
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type + "==type")
+					}
+				})
+			}, 600000);
+
+			window.addEventListener('show', function() {
+				var usertoken = localStorage.getItem("token");
+				console.log(usertoken)
+				console.log(url + 'hyapi/member/getnearbyuser')
+				mui.ajax(url + 'hyapi/member/getnearbyuser', {
+					data: {
+						token: '7941c5657fcc07cddbf01ea58f7218ea'
+						//							token: usertoken
+					},
+					type: 'get',
+					dataType: 'json',
+					success: function(successdata) {
+						console.log(JSON.stringify(successdata.data.data))
+						vm.setItems(successdata.data.data)
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type + "==type")
+					}
+				})
+			})
+
+			var vm = new Vue({
+				el: '#page',
+				data: {
+					items: []
+				},
+				created: function() {
+					var usertoken = localStorage.getItem("token");
+					console.log(usertoken)
+					console.log(url + 'hyapi/member/getnearbyuser')
+					mui.ajax(url + 'hyapi/member/getnearbyuser', {
+						data: {
+							token: '7941c5657fcc07cddbf01ea58f7218ea'
+							//							token: usertoken
+						},
+						type: 'get',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(JSON.stringify(successdata.data.data))
+							vm.setItems(successdata.data.data)
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+				},
+				methods: {
+					setItems: function(data) {
+						this.items = data;
+					},
+					addUser: function() {
+						plus.nativeUI.prompt("你需要发送验证申请,等待对方通过", null, "添加好友验证")
+					},
+					swiperight: function() {
+						var launchPage = plus.webview.getLaunchWebview();
+						mui.fire(launchPage, 'swiperight', null); //触发首页的自定义的"swiperight"事件，打开侧滑菜单
+					},
+					swipeleft: function() {
+						var launchPage = plus.webview.getLaunchWebview();
+						mui.fire(launchPage, 'swipeleft', null); //触发首页的自定义的"swipeleft"事件，打开侧滑菜单
+					},
+					menu: function() {
+						var launchPage = plus.webview.getLaunchWebview();
+						mui.fire(launchPage, 'menu', null); //触发首页的自定义的"menu"事件，打开侧滑菜单
+					}
+				}
+			})
+
+			//主界面向右滑动，若菜单未显示，则显示菜单；否则不做任何操作；
+			window.addEventListener("swiperight", vm.swiperight);
+			//主界面向左滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
+			window.addEventListener("swipeleft", vm.swipeleft);
+			//menu页面向左滑动，关闭菜单；
+			window.addEventListener("menu:swipeleft", vm.menu);
+		</script>
+	</body>
+
+</html>

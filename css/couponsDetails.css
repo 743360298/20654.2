@@ -1,0 +1,383 @@
+html {
+  background-color: #fff;
+}
+
+.mui-content {
+  background-color: #fff;
+}
+
+.mui-icon-back:before, .mui-icon-left-nav:before {
+  color: #000;
+}
+
+.couponsBox {
+  width: 100%;
+}
+
+.couponsBox .couponsImg {
+  width: 7.5rem;
+  height: 4rem;
+}
+
+.couponsBox .couponsImg img {
+  width: 100%;
+  height: 100%;
+}
+
+.couponsBox .couponsTxt {
+  position: relative;
+  padding: 0 0.24rem;
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.couponsBox .couponsTxt span {
+  line-height: initial;
+}
+
+.couponsBox .couponsTxt > span:nth-child(1) {
+  font-size: 0.36rem;
+  color: #333333;
+  font-weight: bold;
+}
+
+.couponsBox .couponsTxt > span:nth-child(2) {
+  margin: 0.2rem 0;
+  font-size: 0.28rem;
+  color: #333333;
+  font-weight: bold;
+}
+
+.couponsBox .couponsTxt > span:nth-child(3) {
+  font-size: 0.26rem;
+  color: #333333;
+}
+
+.couponsBox .couponsTxt .BusinessAddress {
+  line-height: initial;
+  font-size: 0.26rem;
+  color: #333333;
+  margin: 0.2rem 0;
+}
+
+.couponsBox .couponsTxt .BusinessAddress .distance {
+  color: #828282;
+}
+
+.couponsBox .couponsTxt .BusinessPhone {
+  line-height: initial;
+  font-size: 0.26rem;
+  color: #333333;
+}
+
+#collect {
+  border-radius: 0.1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 0.3rem;
+  width: 1.3rem;
+  height: 0.6rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: -0.6rem;
+  right: 1.8rem;
+}
+
+#collect img {
+  display: block;
+  width: 0.32rem;
+  height: 0.3rem;
+  margin-right: 0.1rem;
+  margin-top: 0.03rem;
+  vertical-align: initial;
+}
+
+#collect span {
+  display: block;
+  vertical-align: initial;
+}
+
+#GPSNav {
+  border-radius: 0.1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 0.3rem;
+  width: 1.3rem;
+  height: 0.6rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: -0.6rem;
+  right: 0.24rem;
+}
+
+#GPSNav img {
+  display: block;
+  width: 0.32rem;
+  height: 0.3rem;
+  margin-right: 0.1rem;
+  margin-top: 0.03rem;
+  vertical-align: initial;
+}
+
+#GPSNav span {
+  display: block;
+  vertical-align: initial;
+}
+
+.receiveBox {
+  margin-top: 0.35rem;
+  padding: 0.24rem 0;
+}
+
+.receiveBox > span {
+  font-size: 0.36rem;
+  font-weight: bold;
+  font-family: PingFang-SC-Regular;
+  color: #333333;
+  padding: 0 0.24rem;
+}
+
+.receiveBox .receiveList li {
+  padding: 0 0.24rem 0.24rem;
+  border-bottom: 1px solid gainsboro;
+}
+
+.receiveBox .receiveList li:last-child {
+  padding: 0 0.24rem 0.24rem;
+  border-bottom: 0;
+}
+
+.receiveBox .receiveDetails {
+  width: 100%;
+  display: flex;
+  margin-top: 0.3rem;
+}
+
+.receiveBox .receiveDetails .receiveImg {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.24rem;
+  min-width: 2rem;
+}
+
+.receiveBox .receiveDetails .receiveImg img {
+  width: 100%;
+  height: 100%;
+}
+
+.receiveBox .receiveDetails .receiveTxt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.receiveBox .receiveDetails .receiveTxt div span {
+  display: block;
+  width: 100%;
+  line-height: initial;
+}
+
+.receiveBox .receiveDetails .receiveTxt div span:nth-child(1) {
+  font-size: 0.32rem;
+  color: #333;
+  font-family: PingFang-SC-Regular;
+  font-weight: bold;
+}
+
+.receiveBox .receiveDetails .receiveTxt div span:nth-child(2) {
+  font-size: 0.24rem;
+  color: #828282;
+  font-family: PingFang-SC-Regular;
+  padding: 0.15rem 0 0.1rem;
+}
+
+.receiveBox .receiveDetails .receiveTxt div span:nth-child(3) {
+  font-size: 0.24rem;
+  color: #828282;
+  font-family: PingFang-SC-Regular;
+  position: relative;
+}
+
+.receiveBox .receiveDetails .receiveTxt div span:nth-child(3) i {
+  font-style: normal;
+  color: #4EA3F9;
+}
+
+.receiveBox .receiveDetails .receiveTxt div span:nth-child(3) #receiveBtn {
+  width: 1.2rem;
+  height: 0.6rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #4EA3F9 !important;
+  font-size: 0.26rem;
+  line-height: 0.6rem;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.1rem;
+}
+
+.receiveBox .receiveDetails .receiveTxt .validity {
+  font-size: 0.24rem;
+  color: #828282;
+  font-family: PingFang-SC-Regular;
+}
+
+i {
+  font-style: normal;
+}
+
+.evaluate > span {
+  padding: 0 0.24rem;
+  font-size: 0.36rem;
+  color: #333333;
+  font-family: PingFang-SC-Regular;
+  font-weight: bold;
+}
+
+.evaluate .evaluateList .evaluateDetails:last-child {
+  border-bottom: 0;
+}
+
+.evaluate .evaluateList .evaluateDetails {
+  padding: 0.24rem;
+  border-bottom: 1px solid #DCDCDC;
+  width: 100%;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName {
+  display: flex;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateImg {
+  width: 0.8rem;
+  height: 0.8rem;
+  min-width: 0.8rem;
+  margin-right: 0.15rem;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateImg img {
+  border-radius: 0.1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateName {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateName > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateName > div > span:first-child {
+  color: #333333;
+  font-size: 0.3rem;
+  line-height: initial;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateName > div > span:last-child {
+  color: #333333;
+  font-size: 0.26rem;
+  line-height: initial;
+}
+
+.evaluate .evaluateList .evaluateDetails .userName .evaluateName > span {
+  color: #828282;
+  font-size: 0.26rem;
+  line-height: initial;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments {
+  margin-top: 0.2rem;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments p {
+  line-height: initial;
+  font-size: 0.3rem;
+  color: #333333;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .commentsImgList {
+  margin-top: 0.3rem;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .commentsImgList li {
+  width: 2.26rem;
+  height: 2.226rem;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .commentsImgList li img {
+  width: 100%;
+  height: 100%;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .commentsImgList3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .commentsImgList3 li {
+  width: 2.26rem;
+  height: 2.26rem;
+  margin: 0 0.12rem 0.12rem 0;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .commentsImgList3 li:nth-child(3n) {
+  margin: 0 0 0.12rem 0;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .replyList {
+  margin-top: 0.3rem;
+  background-color: #f7f7f7;
+  padding: 0.2rem;
+  position: relative;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .replyList .dialogue {
+  position: absolute;
+  width: 0.3rem;
+  height: 0.15rem;
+  border-top: transparent solid 0.15rem;
+  border-left: transparent solid 0.15rem;
+  border-bottom: #f7f7f7 solid 0.15rem;
+  border-right: transparent solid 0.15rem;
+  top: -0.3rem;
+  left: 0.6rem;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .replyList li span {
+  font-size: 0.3rem;
+  line-height: initial;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .replyList li span:first-child {
+  color: #828282;
+}
+
+.evaluate .evaluateList .evaluateDetails .userComments .replyList li span:last-child {
+  color: #333;
+}
+
+.moreBtn {
+  padding: 0.24rem;
+  display: flex;
+  justify-content: center;
+  font-size: 0.26rem;
+  color: #333333;
+  line-height: initial;
+  margin-bottom: 0.8rem;
+}
+
+.moreBtn .mui-icon {
+  font-size: 0.24rem;
+  line-height: initial;
+}

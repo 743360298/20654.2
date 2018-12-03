@@ -1,0 +1,227 @@
+.infoDetail {
+  margin-top: 0.3rem;
+  background-color: #fff;
+  padding: 0.25rem 0.24rem;
+}
+
+.infoImg {
+  display: flex;
+}
+
+.infoImg img {
+  border-radius: 0.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.24rem;
+}
+
+.infoImg .infoTxt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.infoImg .infoTxt .userInfo img {
+  width: 0.21rem;
+  height: 0.25rem;
+}
+
+.infoImg .infoTxt #infoName {
+  color: #333;
+  font-size: 0.3rem;
+  line-height: initial;
+  margin-right: 0.18rem;
+}
+
+.infoImg .infoTxt .positioning {
+  width: 100%;
+  position: relative;
+  line-height: initial;
+}
+
+.infoImg .infoTxt .positioning > span {
+  font-size: 0.26rem;
+  color: #828282;
+}
+
+.infoImg .infoTxt .positioning img {
+  height: 0.24rem;
+  width: 0.24rem;
+  margin: 0;
+}
+
+.infoImg .infoTxt .positioning .giveLike {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.infoImg .infoTxt .positioning .giveLike .giveLikeImg {
+  display: none;
+}
+
+.infoImg .infoTxt .positioning .giveLike .giveLikeImg2 {
+  display: block;
+}
+
+.infoImg .infoTxt .positioning .giveLike .giveLikeSpan1 {
+  color: #828282;
+}
+
+.infoImg .infoTxt .positioning .giveLike .giveLikeSpan2 {
+  color: #4EA3F9;
+}
+
+.infoImg .infoTxt .positioning .giveLike span {
+  margin-top: 0.05rem;
+  font-size: 0.22rem;
+  color: #828282;
+  text-align: center;
+  line-height: initial;
+}
+
+.infoImg .infoTxt > span {
+  color: #828282;
+  font-size: 0.26rem;
+  line-height: initial;
+}
+
+.individuality {
+  background-color: #fff;
+  padding: 0 0.24rem;
+  height: 1rem;
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.individuality span:first-child {
+  font-size: 0.28rem;
+  color: #333333;
+}
+
+.individuality span:last-child {
+  font-size: 0.24rem;
+  color: #828282;
+}
+
+.note {
+  margin-top: 0.3rem;
+}
+
+.note .individuality {
+  margin: 0 !important;
+}
+
+.note .individuality:first-child {
+  position: relative;
+}
+
+.note .individuality:first-child::after {
+  clear: both;
+  display: block;
+  content: "";
+  height: 1px;
+  background: gainsboro;
+  width: 94%;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+}
+
+.dynamic {
+  height: 1.6rem;
+}
+
+.dynamic > span:first-child {
+  min-width: 1.12rem;
+}
+
+.dynamic .dynamicList {
+  width: 100%;
+  display: flex;
+}
+
+.dynamic .dynamicList li {
+  margin-left: 0.18rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.dynamic .dynamicList li img {
+  width: 100%;
+  height: 100%;
+}
+
+.control {
+  padding: 0.24rem;
+  height: 5.7rem;
+  width: 100%;
+}
+
+.control #container {
+  height: 5.7rem;
+  width: 100%;
+}
+
+.lineBox {
+  margin-top: 0.3rem;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.lineBox .lineTab {
+  font-size: 0.28rem;
+  color: #333333;
+  position: relative;
+  line-height: initial;
+}
+
+.lineBox .lineTab::after {
+  clear: both;
+  display: block;
+  content: "";
+  height: 0.08rem;
+  background: #4EA3F9;
+  width: 1.9rem;
+  position: absolute;
+  left: 50%;
+  bottom: -50%;
+  transform: translate(-50%, 0);
+}
+
+.lineBox .lineTab2::after {
+  clear: both;
+  display: block;
+  content: "";
+  height: 0.08rem;
+  background: #57CD79;
+  width: 1.9rem;
+  position: absolute;
+  left: 50%;
+  bottom: -50%;
+  transform: translate(-50%, 0);
+  z-index: 999;
+}
+
+.addFriends {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#addFriendsBtn {
+  height: 0.98rem;
+  width: 7.02rem;
+  font-size: 0.32rem;
+  color: #FDFDFD;
+  border-radius: 0.1rem;
+  background-color: #4EA3F9;
+  margin: 0.4rem auto;
+}

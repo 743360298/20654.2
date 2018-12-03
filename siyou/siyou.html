@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/animate.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/public.js"></script>
+</head>
+<body>
+    <header id="header" class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">似友</h1>
+      <button class="setBtn  mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-right headImg2">
+          <img src="../images/mipmap-xhdpi/icon_set.png" alt="">
+        </button>
+      <button class=" mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left headImg">
+        <img src="../images/00.png" alt="">
+      </button>
+    </header>
+
+    <div class="mui-content">
+      <ul class="infoList">
+        <li class="infoListLi">
+          <a href="javascript:;">
+            <div class="infoImg">
+              <img src="../images/00.png" alt="">
+              <div class="infoTxt">
+                <div class="userInfo">
+                    <span id="infoName">滑稽</span>
+                    <img src="../images/mipmap-xhdpi/icon_sex_girl.png" alt="">
+                </div>
+                <div class="positioning">
+                    <img src="../images/mipmap-xhdpi/icon_distance.png" alt="">
+                    <span>30m</span>
+                </div>
+                <span>路线相似：99%</span>
+              </div>
+            </div>
+            <button type="button" class="addBtn mui-btn  mui-btn-outlined">添加好友</button>          
+          </a>
+        </li>
+        <li class="infoListLi">
+          <a href="javascript:;">
+            <div class="infoImg">
+              <img src="../images/00.png" alt="">
+              <div class="infoTxt">
+                <div class="userInfo">
+                    <span id="infoName">滑稽</span>
+                    <img src="../images/mipmap-xhdpi/icon_sex_girl.png" alt="">
+                </div>
+                <div class="positioning">
+                    <img src="../images/mipmap-xhdpi/icon_distance.png" alt="">
+                    <span>30m</span>
+                </div>
+                <span>路线相似：99%</span>
+              </div>
+            </div>
+            <button type="button" class="addBtn mui-btn  mui-btn-outlined">添加好友</button>          
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <footer id="footer">
+      <ul class="footerList">
+        <li>
+          <a href="../information/info.html">
+              <img src="..//images/mipmap-xhdpi/icon_message.png" alt="">
+              <span>消息</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" class="footActive">
+              <img src="..//images/mipmap-xhdpi/icon_onclick_friend.png" alt="">
+              <span>似友</span>
+          </a>
+        </li>
+        <li>
+          <a href="../circle/circle.html">
+              <img src="..//images/mipmap-xhdpi/icon_dynamic.png" alt="">
+              <span>圈子</span>
+          </a>
+        </li>
+      </ul>
+    </footer>
+      
+    <!-- 弹框 -->
+    <div class="bouncedSiyou">
+      <ul class="bouncedList">
+        <li>只看女生</li>
+        <li>只看男生</li>
+        <li>查看全部</li>
+        <li>按路线相似度排行</li>
+        <li>按距离排序</li>
+        <li class="cancel">取消</li>
+      </ul>
+    </div>
+
+    <!-- 添加好友弹框 -->
+    <div class="addFriendBounced">
+      <p>添加好友验证</p>
+      <p>你需要发送验证申请，等待对方通过</p>
+      <form class="mui-input-group">
+          <div class="mui-input-row">
+            <input id="sendInput" type="text" class="mui-input-clear" placeholder="二哈">
+            <span id="deleteSpanBtn" class="mui-icon mui-icon-clear mui-hidden"></span>
+          </div>
+          <div id="sendBtn">发送</div>
+      </form>
+    </div>
+
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+
+<script>
+  $('.infoListLi').on('click',function () {
+      window.location.href = "./siyouDetails.html";
+  })
+    
+
+
+// 申请添加好友
+$('.addBtn').on('click',function () {
+  event.stopPropagation()
+  console.log('弹框');
+  
+  $('.addFriendBounced').show(200)
+  $('.mui-active').show()
+  $(this).addClass('appliedBtn')
+  $(this).addClass('mui-btn-primary')
+  $(this).html('已申请')
+  
+})
+$('#sendBtn').on('click',function () {
+  $('.addFriendBounced').hide(200)
+  $('.mui-active').hide()
+})
+
+
+
+
+
+//  弹框1
+ $('.setBtn').on('click',function () {
+    $('.mui-active').show()
+    $('.bouncedSiyou').slideDown(200)
+  })
+  $('.mui-active').on('click',function () {
+    $('.mui-active').hide()
+    $('.bouncedSiyou').slideUp(200)
+    $('.addFriendBounced').hide(200)
+  })
+  $('.cancel').on('click',function () {
+    $('.mui-active').hide()
+    $('.bouncedSiyou').slideUp(200)
+  })
+
+</script>

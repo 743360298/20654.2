@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/map.css" />
+	</head>
+
+	<body>
+		<div id="container"></div>
+		<div id="page">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">路线</h1>
+			</header>
+
+			<div class="control" v-cloak>
+				<div class="ways">
+					<div :class="{active:item.isActive}" @tap="selectWay(index)" v-for="(item,index) in items">
+						<img :src="item.src" />
+					</div>
+				</div>
+
+				<div class="location" @tap="setOrigin_location">
+					<img class="locationimg" src="../images/mipmap-xhdpi/destlocation.png" />
+					<span class="mui-ellipsis locationtext" id="origin_location">{{origin_address}}</span>
+				</div>
+				<div class="location" @tap="setDest_location">
+					<img class="locationimg" src="../images/mipmap-xhdpi/location.png" />
+					<span class="mui-ellipsis locationtext" id="dest_location">{{dest_address}}</span>
+				</div>
+
+				<div class="plans" v-show="showPlans">
+					<div :class="{active:plan.isActive}" v-for="(plan,index) in plans" v-if="index<=2" @tap="selectPlan(index,plan.id)">
+						<span class="plantype">{{plan.type}}</span>
+						<span class="duration">{{plan.duration}}分钟</span>
+						<span class="distance">{{plan.distance}}公里</span>
+					</div>
+				</div>
+
+				<div class="btndiv">
+					<div class="subbtn">
+						<button id="build" @tap="build">生成路线</button>
+					</div>
+					<div class="subbtn">
+						<button id="navigate" @tap="navigate">开始导航</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 加载地图JSAPI脚本 -->
+		<script src="https://webapi.amap.com/maps?v=1.4.10&key=e0ab4a7cc4f2de9221e20568b6c11dec"></script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				beforeback: function(){
+					var maplinePage = plus.webview.getWebviewById("mapline");
+					console.log(maplinePage)
+					if(!maplinePage) {
+						var launchPage = plus.webview.getLaunchWebview();
+						launchPage.show();
+					}else{
+						maplinePage.show();
+					}
+				}
+			})
+//			mui.plusReady(function() {
+//				mui.back = function(event) {
+//					plus.webview.currentWebview().close();
+//					var maplinePage = plus.webview.getWebviewById("mapline");
+//					console.log(maplinePage)
+//					if(!maplinePage) {
+//						var launchPage = plus.webview.getLaunchWebview();
+//						launchPage.show();
+//					}
+//				}
+//			})
+
+			var map = new AMap.Map('container', {
+				resizeEnable: true, //是否监控地图容器尺寸变化
+				zoom: 12, //初始化地图层级
+				//				center: [113.401562,23.109392], //中心点坐标
+			});
+
+			var marker1, marker2, path, lnglats, routeLine;
+
+			//			map.setCenter([113.401562, 23.119392]) //设置地图中心点
+
+			var usertoken = localStorage.getItem("token");
+			console.log(usertoken)
+
+			var vm = new Vue({
+				el: '#page',
+				data: {
+					onclickImg: [
+						'../images/mipmap-xhdpi/icon_onclick_car.png',
+						'../images/mipmap-xhdpi/icon_onclick_bus.png',
+						'../images/mipmap-xhdpi/icon_onclick_bike.png',
+						'../images/mipmap-xhdpi/icon_onclick_walk.png'
+					],
+					normalImg: [
+						'../images/mipmap-xhdpi/icon_car.png',
+						'../images/mipmap-xhdpi/icon_bus.png',
+						'../images/mipmap-xhdpi/icon_bike.png',
+						'../images/mipmap-xhdpi/icon_walk.png'
+					],
+					items: [{
+						isActive: true,
+						src: '../images/mipmap-xhdpi/icon_onclick_car.png',
+						type: 'drive'
+					}, {
+						isActive: false,
+						src: '../images/mipmap-xhdpi/icon_bus.png',
+						type: 'bus'
+					}, {
+						isActive: false,
+						src: '../images/mipmap-xhdpi/icon_bike.png',
+						type: 'bike'
+					}, {
+						isActive: false,
+						src: '../images/mipmap-xhdpi/icon_walk.png',
+						type: 'walk'
+					}],
+					selectType: '', //选择交通方式
+					origin_location_lng: '',
+					origin_location_lat: '',
+					dest_location_lng: '',
+					dest_location_lat: '',
+					origin_address: '输入起点',
+					dest_address: '输入终点',
+					showPlans: false,
+					plans: [], //备选方案
+					selectId: ''
+				},
+				computed: {
+					origin_location: function() {
+						return this.origin_location_lng + ',' + this.origin_location_lat;
+					},
+					dest_location: function() {
+						return this.dest_location_lng + ',' + this.dest_location_lat;
+					},
+					param: function() {
+						return '{"type":\"' + this.selectType + '\","origin_location":\"' + this.origin_location + '\","dest_location":\"' + this.dest_location + '\","origin_address":"","dest_address":""}';
+					}
+				},
+				watch: {
+					origin_address: function() {
+						console.log("origin_address change")
+						var _this = this;
+						if(this.dest_address != "" && this.dest_address != "输入终点") { //如果已选终点
+							//							this.getPath() //获取备选路线并画出路线
+							this.selectWay(0)
+						} else { //否则只标起点
+							var origin_location_lng = parseFloat(_this.origin_location_lng);
+							var origin_location_lat = parseFloat(_this.origin_location_lat);
+							addMarker1(origin_location_lng, origin_location_lat);
+						}
+					},
+					dest_address: function() {
+						console.log("dest_address change")
+						var _this = this;
+						if(this.origin_address != "" && this.origin_address != "输入起点") { //如果已选起点
+							//							this.getPath() //获取备选路线并画出路线
+							this.selectWay(0)
+						} else { //否则只标终点
+							var dest_location_lng = parseFloat(_this.dest_location_lng);
+							var dest_location_lat = parseFloat(_this.dest_location_lat);
+							addMarker2(dest_location_lng, dest_location_lat);
+						}
+					}
+				},
+				created: function() {
+					this.selectWay(0);
+					mui.ajax(url + 'hyapi/member/getline', {
+						data: {
+							token: usertoken
+						},
+						type: 'post',
+						dataType: 'json',
+						success: function(successdata) {
+							if(successdata.data) {
+								drawRoute(successdata.data)
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+				},
+				methods: {
+					selectWay: function(index) {
+						var _this = this;
+						this.items.forEach(function(item, i) {
+							if(index == i) {
+								_this.selectType = item.type;
+								console.log(_this.selectType)
+								item.isActive = true;
+								item.src = _this.onclickImg[i];
+							} else {
+								item.isActive = false;
+								item.src = _this.normalImg[i];
+							}
+						})
+						if(this.origin_address != "" && this.origin_address != "输入起点" && this.dest_address != "" && this.dest_address != "输入终点") {
+							console.log(_this.param)
+							this.getPath() //获取备选路线并画出路线
+						}
+					},
+					setOrigin_location: function() {
+						mui.openWindow({
+							url: 'setOrigin_location.html',
+							id: 'setOrigin_location',
+							waiting: {
+								autoShow: false
+							}
+						})
+					},
+					setDest_location: function() {
+						mui.openWindow({
+							url: 'setDest_location.html',
+							id: 'setDest_location',
+							waiting: {
+								autoShow: false
+							}
+						})
+					},
+					getPath: function() { //获取备选路线
+						console.log("getPath")
+						var _this = this;
+						console.log(_this.param)
+						mui.ajax(url + 'hyapi/member/getlines', {
+							data: {
+								common_param: _this.param,
+								token: usertoken
+							},
+							type: 'post',
+							dataType: 'json',
+							success: function(successdata) {
+								console.log(successdata.data)
+								if(successdata.data) {
+									_this.plans = successdata.data;
+									_this.showPlans = true;
+									_this.selectPlan(0, _this.plans[0].id); //默认选择第一条路线
+								} else {
+									_this.plans = [];
+									_this.showPlans = false;
+									_this.selectId = ''; //清空选择路线id
+								}
+							},
+							error: function(xhr, type, errorThrown) {
+								_this.showPlans = false;
+								console.log(type + "==type")
+							}
+						})
+					},
+					selectPlan: function(index, id) {
+						console.log("selectPlan")
+						var _this = this;
+						_this.selectId = id;
+						this.plans.forEach(function(plan, i) {
+							if(index == i) {
+								plan.isActive = true;
+								drawRoute(plan.min_polyline) //画出路线
+							} else {
+								plan.isActive = false;
+							}
+						})
+					},
+					build: function() {
+						var _this = this;
+						if(this.selectId == "") {
+							mui.toast("请选择一条路线")
+						} else {
+							console.log(_this.selectId)
+							mui.ajax(url + 'hyapi/member/createline', {
+								data: {
+									common_param: '{"id":' + _this.selectId + '}',
+									token: usertoken
+								},
+								type: 'post',
+								dataType: 'json',
+								success: function(successdata) {
+									console.log(usertoken)
+									console.log(successdata.errcode + "===" + successdata.errmsg)
+									if(successdata.errcode == 0) {
+//										plus.webview.currentWebview().close();
+//										var mapPage = plus.webview.getWebviewById('mapline');
+//										mui.fire(mapPage, 'show', null);
+//										mapPage.show('slide-in-right');
+										mui.openWindow({
+											url: 'mapline.html',
+											id: 'mapline',
+											waiting: {
+												autoShow: true,
+												title: '正在生成路线'
+											}
+										})
+									} else {
+										mui.toast(successdata.errmsg)
+									}
+								},
+								error: function(xhr, type, errorThrown) {
+									console.log(type + "==type")
+								}
+							})
+
+						}
+					},
+					navigate: function() {
+						if('Android' === plus.os.name && navigator.userAgent.indexOf('StreamApp') > 0) {
+							plus.nativeUI.toast('当前环境暂不支持地图插件');
+							return;
+						}
+						// 设置目标位置坐标点和其实位置坐标点
+						var dst = new plus.maps.Point(this.dest_location_lng, this.dest_location_lat);
+						var src = new plus.maps.Point(this.origin_location_lng, this.origin_location_lat);
+						// 调用系统地图显示 
+						plus.maps.openSysMap(dst, "", src);
+					}
+				}
+
+			})
+
+			window.addEventListener('show', function() {
+				console.log("show")
+
+				vm.origin_address = localStorage.getItem("origin_address") || '输入起点';
+				vm.dest_address = localStorage.getItem("dest_address") || '输入终点';
+
+				//改变起点经纬度并标记起点
+				vm.origin_location_lng = localStorage.getItem("origin_location_lng") || '';
+				vm.origin_location_lat = localStorage.getItem("origin_location_lat") || '';
+
+				//改变终点经纬度并标记终点
+				vm.dest_location_lng = localStorage.getItem("dest_location_lng") || '';
+				vm.dest_location_lat = localStorage.getItem("dest_location_lat") || '';
+
+			}, false)
+
+			// 实例化点标记
+			function addMarker1(lng, lat) {
+
+				if(marker1) {
+					marker1.setMap(null);
+					marker1 = null;
+				}
+				marker1 = new AMap.Marker({
+					icon: 'https://webapi.amap.com/theme/v1.3/markers/n/start.png',
+					position: [lng, lat]
+				});
+				marker1.setMap(map);
+				map.setCenter([lng, lat]);
+			}
+
+			// 实例化点标记
+			function addMarker2(lng, lat) {
+
+				if(marker2) {
+					marker2.setMap(null);
+					marker2 = null;
+				}
+				marker2 = new AMap.Marker({
+					icon: 'https://webapi.amap.com/theme/v1.3/markers/n/end.png',
+					position: [lng, lat]
+				});
+				marker2.setMap(map);
+				map.setCenter([lng, lat]);
+			}
+
+			function drawRoute(route) {
+
+				try {
+
+					console.log("drawRoute")
+
+					map = new AMap.Map('container', {
+						resizeEnable: true, //是否监控地图容器尺寸变化
+						zoom: 12, //初始化地图层级
+						//				center: [113.401562,23.109392], //中心点坐标
+					});
+
+					path = route.split(";");
+
+					//	console.log(path[0])
+
+					lnglats = [];
+					for(var i in path) {
+						var lnglat = path[i].split(",");
+						lnglats.push(new AMap.LngLat(lnglat[0], lnglat[1]));
+					}
+
+					var startMarker = new AMap.Marker({
+						position: lnglats[0],
+						icon: 'https://webapi.amap.com/theme/v1.3/markers/n/start.png',
+						map: map
+					})
+
+					var endMarker = new AMap.Marker({
+						position: lnglats[lnglats.length - 1],
+						icon: 'https://webapi.amap.com/theme/v1.3/markers/n/end.png',
+						map: map
+					})
+
+					routeLine = new AMap.Polyline({
+						path: lnglats,
+						isOutline: true,
+						outlineColor: '#ffeeee',
+						borderWeight: 2,
+						strokeWeight: 5,
+						strokeColor: '#0091ff',
+						lineJoin: 'round'
+					})
+
+					routeLine.setMap(map)
+
+					// 调整视野达到最佳显示区域
+					map.setFitView([startMarker, endMarker, routeLine])
+
+				} catch(e) {}
+			}
+		</script>
+	</body>
+
+</html>

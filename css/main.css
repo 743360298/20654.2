@@ -1,0 +1,100 @@
+html,
+body,
+page {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	font-family: "Microsoft YaHei", "黑体", "宋体", "Arial", sans-serif;
+	background-color: #F7F7F7;
+}
+
+[v-cloak] {
+	display: none;
+}
+
+
+/*头部导航栏*/
+
+.mui-bar {
+	padding: 0 0.8rem;
+}
+
+.mui-bar-nav {
+	width: 100%;
+	height: 4rem;
+	background-color: #fff;
+	box-shadow: 0.5px 1px #ddd;
+}
+
+.mui-bar-nav .mui-pull-left {
+	display: flex;
+	align-items: center;
+	height: 4rem;
+	color: #000;
+	/*background-color: #eee;*/
+}
+
+.mui-bar-nav h1 {
+	height: 4rem;
+	line-height: 4rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	/*background-color: #eee;*/
+}
+
+.mui-bar-nav .mui-pull-right {
+	display: flex;
+	align-items: center;
+	height: 4rem;
+	font-size: 1.14rem;
+	/*border: 1px solid #000;*/
+}
+
+.mui-bar-nav .mui-action-menu img {
+	width: 3.2rem;
+	height: 3.2rem;
+}
+
+.mui-bar-nav .mui-pull-right img#contacts {
+	width: 3.2rem;
+	height: 3.2rem;
+	/*border: 1px solid #000;*/
+}
+
+.mui-bar-nav .mui-pull-right img#set {
+	width: 1.8rem;
+	height: 1.8rem;
+	/*border: 1px solid #000;*/
+}
+
+.mui-bar-nav .mui-pull-right img#edit {
+	width: 1.5rem;
+	height: 1.5rem;
+	/*border: 1px solid #000;*/
+}
+
+.mui-bar-nav~.mui-content {
+	padding: 0;
+}
+
+.mui-content {
+	position: absolute;
+	top: 4rem;
+	margin-bottom: 5rem;
+	width: 100%;
+	height: 100%;
+	background-color: #F7F7F7;
+	/*border: 1px solid #000;*/
+	/*z-index: 1000;*/
+}
+
+
+/*滚动区域*/
+
+.mui-scroll-wrapper {
+	overflow-y: scroll;
+	/*border: 1px solid #000;*/
+	/*z-index: 1000;*/
+}

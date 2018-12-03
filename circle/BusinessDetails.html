@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/mui.min.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/couponsDetails.css">
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/public.js"></script>
+</head>
+<body>
+    <header id="header" class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">商家详情</h1>
+      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    </header>
+
+    <div class="mui-content">
+      <div class="couponsBox">
+        <div class="couponsImg">
+          <img src="../images/shangpin1.jpg" alt="">
+        </div>
+        <div class="couponsTxt">
+          <span>蜀客酸菜鱼（珠村店）</span>
+          <span>元气二人餐</span>
+          <span>营业时间：11:00-21:00</span>
+          <div class="BusinessAddress">地址：
+            <span>天河区中山大道鸿德广首层(珠村牌坊口)</span>
+            |&nbsp;<span class="distance">距您610m</span>
+          </div>
+
+          <div class="BusinessPhone">电话：<span>020-12345678</span></div>
+          <button type="button" id="GPSNav" class="mui-btn mui-btn-primary mui-btn-outlined">
+            <img src="../images/mipmap-xhdpi/icon_navigation.png" alt="">
+            <span>导航</span>
+          </button>
+          <button type="button" id="collect" class="mui-btn mui-btn-primary mui-btn-outlined">
+            <img src="../images/mipmap-xhdpi/icon_collect.png" alt="">
+            <span>收藏</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 优惠券 -->
+      <div class="receiveBox">
+        <span>优惠券</span>
+        <ul class="receiveList">
+          <li>
+              <div class="receiveDetails">
+                  <div class="receiveImg">
+                    <img src="../images/shangpin2.jpg" alt="">
+                  </div>
+                  <div class='receiveTxt'>
+                    <div>
+                        <span>元气二人餐</span>
+                      <span>周一至周日可用</span>
+                      <span><i>15元</i>优惠券（满100元可用）
+                        <div id="receiveBtn" class="mui-btn mui-btn-primary">
+                            领取
+                        </div>
+                      </span>
+                    </div>
+                    <span class="validity">有效期：2018.07.01-2018.08-31</span>
+        
+                  </div>
+                </div>
+
+          </li>
+          <li>
+              <div class="receiveDetails">
+                  <div class="receiveImg">
+                    <img src="../images/shangpin2.jpg" alt="">
+                  </div>
+                  <div class='receiveTxt'>
+                    <div>
+                        <span>元气二人餐</span>
+                      <span>周一至周日可用</span>
+                      <span><i>15元</i>优惠券（满100元可用）
+                        <div id="receiveBtn" class="mui-btn mui-btn-primary">
+                            领取
+                        </div>
+                      </span>
+                    </div>
+                    <span class="validity">有效期：2018.07.01-2018.08-31</span>
+        
+                  </div>
+                </div>
+
+          </li>
+        </ul>
+      </div>  
+            <!-- 餐厅评价 -->
+            <div class="evaluate">
+                <span>餐厅评价</span>
+                <ul class="evaluateList">
+                  <li class="evaluateDetails">
+                    <div class="userName">
+                        <div class="evaluateImg">
+                            <img src="../images/12-1.jpg" alt="">
+                          </div>
+                          <div class="evaluateName">
+                            <div>
+                                <span>布偶猫</span>
+                                <span>评分：<i>5分</i></span>
+                            </div>
+                            <span>2018-11-29</span>
+                          </div>
+                    </div>
+                    <div class="userComments">
+                      <p>味道不错，经常过来吃，在珠村brt公交车站出来就能
+                          看到了</p>
+                      <!-- 评论图片 -->
+                      <ul class="commentsImgList">
+                        <li><img src="../images/00.png" alt=""></li>
+                      </ul>
+                      
+                      <!-- 商家回复  -->
+                      <ul class="replyList">
+                        <span class="dialogue"></span>
+                        <li>
+                          <span>商家回应：</span>
+                          <span>欢迎亲下次再来~</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="evaluateDetails">
+                    <div class="userName">
+                        <div class="evaluateImg">
+                            <img src="../images/12-1.jpg" alt="">
+                          </div>
+                          <div class="evaluateName">
+                            <div>
+                                <span>布偶猫</span>
+                                <span>评分：<i>5分</i></span>
+                            </div>
+                            <span>2018-11-29</span>
+                          </div>
+                    </div>
+                    <div class="userComments">
+                      <p>味道不错，经常过来吃，在珠村brt公交车站出来就能
+                          看到了</p>
+                      <!-- 评论图片 -->
+                      <ul class="commentsImgList">
+                        <li><img src="../images/00.png" alt=""></li>
+                      </ul>
+                      
+                      <!-- 商家回复  -->
+                      <ul class="replyList">
+                        <span class="dialogue"></span>
+                        <li>
+                          <span>商家回应：</span>
+                          <span>欢迎亲下次再来~</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="evaluateDetails">
+                    <div class="userName">
+                        <div class="evaluateImg">
+                            <img src="../images/12-1.jpg" alt="">
+                          </div>
+                          <div class="evaluateName">
+                            <div>
+                                <span>布偶猫</span>
+                                <span>评分：<i>5分</i></span>
+                            </div>
+                            <span>2018-11-29</span>
+                          </div>
+                    </div>
+                    <div class="userComments">
+                      <p>味道不错，经常过来吃，在珠村brt公交车站出来就能
+                          看到了</p>
+                      <!-- 评论图片 -->
+                      <ul class="commentsImgList commentsImgList3">
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                        <li><img src="../images/12-1.jpg" alt=""></li>
+                      </ul>
+                      
+                      <!-- 商家回复  -->
+                      <ul class="replyList">
+                        <span class="dialogue"></span>
+                        <li>
+                          <span>商家回应：</span>
+                          <span>欢迎亲下次再来~</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+        
+              <div class="moreBtn">
+                <span>查看更多评论</span>
+                <span class="mui-icon mui-icon-arrowright"></span>
+              </div>
+            </div>
+    </div>
+      
+    <!-- 弹框 -->
+    <div class="bouncedCoupons">
+    </div>
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+
+<script>
+
+$('.addBtn').on('click',function () {
+  $(this).addClass('appliedBtn')
+  $(this).addClass('mui-btn-primary')
+  $(this).html('已申请')
+})
+
+
+ // 弹框
+//  $('.setBtn').on('click',function () {
+//     console.log('上传图片');
+//     $('.mui-active').show()
+//     $('.bouncedSiyou').slideDown(200)
+//   })
+//   $('.mui-active').on('click',function () {
+//     $('.mui-active').hide()
+//     $('.bouncedSiyou').slideUp(200)
+//   })
+//   $('.cancel').on('click',function () {
+//     $('.mui-active').hide()
+//     $('.bouncedSiyou').slideUp(200)
+//   })
+
+</script>

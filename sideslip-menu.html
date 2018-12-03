@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/list.css" />
+	</head>
+
+	<body>
+		<div id="page">
+			<div class="account" @tap="userMsg">
+				<img class="accountimg" :src="item.user_headimg" />
+				<div class="accountmsg">
+					<div class="top">
+						<span id="name">{{item.nick_name}}</span>
+						<img id="sex" v-if="item.sex==1" src="images/mipmap-xhdpi/icon_sex_boy.png" />
+						<img id="sex" v-if="item.sex==0" src="images/mipmap-xhdpi/icon_sex_girl.png" />
+					</div>
+					<div class="middle">
+						<span id="age">{{item.age}}岁</span>
+						<span id="horoscope" v-show="item.horoscope">{{item.horoscope}}</span>
+						<span id="address" v-show="item.province,item.city">{{item.province}}-{{item.city}}</span>
+					</div>
+					<div class="bottom">
+						<img id="likeimg" src="images/mipmap-xhdpi/like.png" />
+						<span id="likenum">{{item.likes}}点赞</span>
+					</div>
+				</div>
+			</div>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="map">
+						个人路线
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>
+						信用分
+						<span class="mui-pull-right update noarrow">
+							{{score}}
+						</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						个人动态
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						我的攻略
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						优惠券
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						我的收藏
+					</a>
+				</li>
+			</ul>
+
+			<img class="setting" src="images/mipmap-xhdpi/setting.png" />
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				keyEventBind: {
+					backbutton: false,
+					menubutton: false
+				}
+			});
+
+			var usertoken = localStorage.getItem("token");
+			console.log(usertoken)
+
+			new Vue({
+				el: '#page',
+				data: {
+					score: '',
+					item: {}
+				},
+				created: function() {
+					var _this = this;
+					mui.ajax(url + 'hyapi/member/getdetail', {
+						data: {
+							token: usertoken
+						},
+						type: 'get',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(JSON.stringify(successdata.data))
+							if(successdata.data) {
+								_this.item = successdata.data;
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+					mui.ajax(url + 'hyapi/member/getpoint', {
+						data: {
+							token: usertoken
+						},
+						type: 'get',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(JSON.stringify(successdata.data))
+							if(successdata.data) {
+								_this.score = successdata.data;
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+
+					//					mui.preload({
+					//						url: 'setting/userMsg.html',
+					//						id: 'userMsg',
+					//						styles: {
+					//							left: 0,
+					//							width: '70%',
+					//							zindex: 9997
+					//						}
+					//					});
+				},
+				methods: {
+					userMsg: function() {
+						//						plus.webview.show('setting/userMsg.html', 'userMsg', {}, 'slide-in-right', 200);
+						closeMenu();
+						mui.openWindow({
+							url: 'setting/userMsg.html',
+							id: 'userMsg',
+							extras: {},
+							waiting: {
+								autoShow: false
+							}
+						})
+					}
+				}
+			})
+
+			//获得侧滑主窗口webview对象
+			var main = null;
+			mui.plusReady(function() {
+				main = plus.webview.currentWebview().opener();
+
+				mui("#map")[0].addEventListener('tap', function() {
+					closeMenu();
+					mui.openWindow({
+						url: 'map/mapline.html',
+						id: 'mapline',
+						waiting: {
+							autoShow: true,
+							title: "正在跳转"
+						}
+					})
+				})
+			})
+
+			function closeMenu() {
+				mui.fire(main, "menu:swipeleft");
+			}
+			//优化显示出来的侧滑菜单，只需监听该菜单的左滑事件，然后将其关闭即可；在菜单上右滑，不做任何操作；
+			window.addEventListener("swipeleft", closeMenu);
+			mui.menu = closeMenu;
+		</script>
+	</body>
+
+</html>

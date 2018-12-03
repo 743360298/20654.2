@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/user.css" />
+	</head>
+
+	<body>
+		<div id="page">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			</header>
+			<h1>登录</h1>
+			<p class="tips">+86&nbsp;<span id="phone"></span>&nbsp;请输入密码</p>
+			<div class="inputdiv">
+				<input class="input" type="password" name="password" id="password" placeholder="输入密码" />
+			</div>
+			<button class="btn" disabled="disabled">登录</button>
+			<p class="forgetpassword">忘记密码?</p>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function() {
+				var cPage = plus.webview.currentWebview();
+				console.log(cPage.phonenumber)
+				mui("#phone")[0].innerText = cPage.phonenumber;
+
+				//忘记密码
+				mui(".forgetpassword")[0].addEventListener('tap', function() {
+					mui.openWindow({
+						url: 'forgetpassword.html',
+						id: 'forgetpassword',
+						extras: {
+							phonenumber: cPage.phonenumber
+						},
+						waiting: {
+							autoShow: false
+						}
+					})
+				})
+
+				//监听密码输入
+				mui("#password")[0].addEventListener('input', function() {
+					mui(".btn")[0].disabled = mui("#password")[0].value ? false : true;
+				})
+
+				//登录
+				mui(".btn")[0].addEventListener('tap', function() {
+					mui.ajax(url+'hyapi/member/login', {
+						data: {
+							common_param: '{"mobile":' + cPage.phonenumber + ',"password":' + mui("#password")[0].value + '}'
+						},
+						type: 'post',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(successdata.errcode)
+							if(successdata.errcode == 0 && successdata.data != null) {
+								localStorage.setItem("phonenumber", cPage.phonenumber);
+								localStorage.setItem("password", mui("#password")[0].value);
+								localStorage.setItem("token", successdata.data);
+								mui.toast("登录成功")
+								plus.webview.close("login1")
+								plus.webview.close("login2")
+								mui.fire(plus.webview.getWebviewById('HBuilder'), 'show');
+							} else {
+								mui.toast("密码错误")
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>

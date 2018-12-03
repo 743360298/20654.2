@@ -1,0 +1,114 @@
+#header button {
+  font-size: 0.3rem !important;
+}
+
+.mui-icon-back:before, .mui-icon-left-nav:before {
+  font-size: 0;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+  font-size: 0.28rem;
+}
+
+#header button {
+  font-size: 0.28rem  !important;
+}
+
+.mui-bar .mui-title {
+  font-size: 0.36rem;
+  font-family: Adobe Heiti Std R;
+  font-weight: normal;
+  color: black;
+}
+
+.mui-content {
+  position: static;
+  padding: 0.24rem  !important;
+  margin-bottom: 0;
+}
+
+html {
+  background-color: #fff;
+}
+
+body {
+  background-color: #fff;
+}
+
+#textarea {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0.3rem;
+  line-height: initial;
+}
+
+.AddPhotos {
+  padding: 0.24rem  0;
+}
+
+.AddPhotos .AddPhotosList .default {
+  width: 2.26rem;
+  height: 2.26rem;
+  background: #f7f7f7;
+  position: relative;
+}
+
+.AddPhotos .AddPhotosList .default div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.AddPhotos .AddPhotosList .default div img {
+  width: 0.9rem;
+  height: 0.72rem;
+  margin: 0 auto;
+}
+
+.AddPhotos .AddPhotosList .default div span {
+  width: 100%;
+  color: #333;
+  font-size: 0.24rem;
+  text-align: center;
+  line-height: initial;
+  margin-top: 0.2rem;
+}
+
+.publishGPS {
+  margin-top: 0.1rem;
+  padding: 0.2rem  0;
+  border-top: 1px solid #DCDCDC;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+.publishGPS span {
+  font-size: 0.3rem;
+  color: #333333;
+}
+
+.phoneBounced {
+  display: none;
+  z-index: 99999;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.phoneBounced .chooseList li {
+  background-color: #fff;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  font-size: 0.32rem;
+}
+
+.phoneBounced .chooseList .cancel {
+  margin-top: 0.2rem;
+}

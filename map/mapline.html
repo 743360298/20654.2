@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/map.css" />
+	</head>
+
+	<body>
+		<div id="container"></div>
+		<div id="page">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">路线</h1>
+				<span class="mui-icon mui-pull-right" @tap="mod">
+					修改路线
+				</span>
+			</header>
+
+			<div class="control" v-cloak>
+				<div class="btndiv">
+					<div class="subbtn">
+						<button id="match" @tap="match">匹配似友</button>
+					</div>
+					<div class="subbtn">
+						<button id="navigate" @tap="navigate">开始导航</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 加载地图JSAPI脚本 -->
+		<script src="https://webapi.amap.com/maps?v=1.4.10&key=e0ab4a7cc4f2de9221e20568b6c11dec"></script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			var marker1, marker2, map = new AMap.Map('container', {
+				resizeEnable: true, //是否监控地图容器尺寸变化
+				zoom: 12, //初始化地图层级
+				//				center: [113.401562,23.109392], //中心点坐标
+			});
+
+			var path, lnglats, startMarker, endMarker, routeLine;
+
+			var usertoken = localStorage.getItem("token");
+			console.log(usertoken)
+
+			var vm = new Vue({
+				el: '#page',
+				data: {},
+				created: function() {
+					console.log("created")
+					mui.ajax(url + 'hyapi/member/getline', {
+						data: {
+							token: usertoken
+						},
+						type: 'post',
+						dataType: 'json',
+						success: function(successdata) {
+							console.log(successdata.data)
+							if(successdata.data) {
+								drawRoute(successdata.data)
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type + "==type")
+						}
+					})
+				},
+				methods: {
+					match: function() {
+						plus.webview.currentWebview().close();
+						var launchPage = plus.webview.getLaunchWebview();
+						mui.fire(launchPage, 'siyou', null);//触发首页的自定义的"siyou"事件，切换到似友页面
+					},
+					navigate: function() {
+						if('Android' === plus.os.name && navigator.userAgent.indexOf('StreamApp') > 0) {
+							plus.nativeUI.toast('当前环境暂不支持地图插件');
+							return;
+						}
+						// 设置目标位置坐标点和其实位置坐标点
+						var dst = new plus.maps.Point(this.dest_location_lng, this.dest_location_lat);
+						var src = new plus.maps.Point(this.origin_location_lng, this.origin_location_lat);
+						// 调用系统地图显示 
+						plus.maps.openSysMap(dst, "", src);
+					},
+					mod: function() {
+						mui.openWindow({
+							url: 'map.html',
+							id: 'map',
+							waiting: {
+								autoShow: false,
+							}
+						})
+					}
+				}
+
+			})
+
+			function drawRoute(route) {
+
+				try {
+					console.log("drawRoute")
+
+					map = new AMap.Map('container', {
+						resizeEnable: true, //是否监控地图容器尺寸变化
+						zoom: 12, //初始化地图层级
+						//				center: [113.401562,23.109392], //中心点坐标
+					});
+
+					path = route.split(";");
+					console.log(path[0])
+
+					lnglats = [];
+					for(var i in path) {
+						var lnglat = path[i].split(",");
+						lnglats.push(new AMap.LngLat(lnglat[0], lnglat[1]));
+					}
+
+					startMarker = new AMap.Marker({
+						position: lnglats[0],
+						icon: 'https://webapi.amap.com/theme/v1.3/markers/n/start.png',
+						map: map
+					})
+
+					endMarker = new AMap.Marker({
+						position: lnglats[lnglats.length - 1],
+						icon: 'https://webapi.amap.com/theme/v1.3/markers/n/end.png',
+						map: map
+					})
+
+					routeLine = new AMap.Polyline({
+						path: lnglats,
+						isOutline: true,
+						outlineColor: '#ffeeee',
+						borderWeight: 2,
+						strokeWeight: 5,
+						strokeColor: '#0091ff',
+						lineJoin: 'round'
+					})
+
+					routeLine.setMap(map)
+
+					// 调整视野达到最佳显示区域
+					map.setFitView([startMarker, endMarker, routeLine])
+
+				} catch(e) {
+					//TODO handle the exception
+				}
+			}
+		</script>
+	</body>
+
+</html>
