@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <link rel="stylesheet" href="../css/circle.css">
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/public.js"></script>
+   <style>
+     body{
+       background-color: #fff;
+     }
+      #header{
+        background-color: rgba(255, 255, 255, 0);
+      }
+      #header .mui-search{
+        position: relative;
+      }
+      #header .mui-search #headerSearch{
+        z-index: 9999999999999;
+        height: 0.8rem ;
+        width: 7.02rem ;
+        font-size: 0.3rem ;
+        background-color: #fff;
+        box-shadow: 0 0 0.1rem #ccc; 
+        border-radius: 0.1rem ;
+        text-indent: 1rem ;
+      }
+      .mui-bar-nav{
+        border-bottom:  0 ;
+      }
+      .mui-bar-nav.mui-bar .mui-icon{
+        margin: 0;
+        padding: 0;
+        height: 0;
+        line-height: initial ;
+      }
+      .mui-search .mui-placeholder{
+        top: 50% ;
+        left: 50% ;
+        transform: translate(-50% ,-50%);
+      }
+      #returnBtn{
+        height: 0.88rem ;
+        line-height: 0.88rem ;
+        padding: 0 0.24rem ;
+        font-size: 0.3rem ;
+        color: #333 ;
+        position: absolute;
+        top: 50% ;
+        left: 0;
+        transform: translate( 0%,-50%);
+        border-right: 1px solid rgba(220,220,220,1);
+      }
+      /* 地图 */
+      .mui-bar-nav~.mui-content{
+        padding-top: 0 !important;
+      }
+      .control {
+        /* padding: 0.24rem; */
+        height: 6.1rem;
+        width: 100%;
+      }
+      .control .distance{
+        font-size: 0.28rem ;
+        position: relative;
+        display: block;
+        padding:  0.24rem ;
+        /* border-bottom: 1px solid  #DCDCDC; */
+      }
+      .mui-bar-nav~.mui-content{
+        border-top: 1px solid  #DCDCDC;
+      }
+      /* .control .distance::after{
+        clear: both;
+        display: block;
+        content: "";
+        height: 1px;
+        width: 100%;
+        background-color: red;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      } */
+      .control .distance img{
+        width: 0.3rem;
+        height: 0.3rem;
+      }
+      .amap-labels{
+        height: 100%;
+      }
+      .control #container {
+        height: 5.2rem;
+        width: 100%;
+      }
+      .circleBox{
+        margin-top: 0;
+      }
+      .circleList{
+        margin-top: 0;
+      }
+  </style>
+</head>
+<body>
+    <header id="header" class="mui-bar mui-bar-nav">
+        <div class="mui-input-row mui-search ">
+            <!-- <a id="returnBtn" class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> -->
+            <a id="returnBtn" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <input type="search" id="headerSearch" class="mui-input-clear mui-input-search" placeholder="" data-input-clear="15" data-input-search="15">
+            <span class="mui-icon mui-icon-clear mui-hidden"></span>
+            <span class="mui-placeholder">
+              <span class="mui-icon mui-icon-search"></span>
+              <span></span>
+            </span>
+          </div>
+          
+    </header>
+    
+
+    <!-- 地图 -->
+    <div class="control" v-cloak>
+        <div id="container"></div>
+        <div class="distance">
+            <img src="../images/mipmap-xhdpi/icon_distance.png" alt="">
+            <span>地图上的商家</span>
+        </div>
+        <script src="https://webapi.amap.com/maps?v=1.4.10&key=e21475127b4797b53b68350988df29cc "></script>
+        <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+        <script>
+          var map = map = new AMap.Map('container', {
+              resizeEnable: true
+          });
+          
+          map.on("complete", function(){
+             log.success("地图加载完成！");  
+          });
+        </script>
+    </div>
+
+
+    <div class="mui-content" >
+
+      <div class="circleBox circleBoxTab">
+        <ul class="circleList">
+          <li>
+            <a href="./BusinessDetails.html">
+              <div class="circleImg"><img src="../images/12-2.jpg" alt=""></div>
+              <div class="circleTxt">
+                <div class="circleTxtTop">
+                    <span>蜀客酸菜鱼（珠村店）</span>
+                    <span>酸菜鱼</span>
+                </div>
+                <div class="circle-positioning">
+                    <img src="../images/mipmap-xhdpi/icon_distance.png" alt="">
+                    <span>20m</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./BusinessDetails.html">
+              <div class="circleImg"><img src="../images/12-2.jpg" alt=""></div>
+              <div class="circleTxt">
+                <div class="circleTxtTop">
+                    <span>蜀客酸菜鱼（珠村店）</span>
+                    <span>酸菜鱼</span>
+                </div>
+                <div class="circle-positioning">
+                    <img src="../images/mipmap-xhdpi/icon_distance.png" alt="">
+                    <span>20m</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./BusinessDetails.html">
+              <div class="circleImg"><img src="../images/12-2.jpg" alt=""></div>
+              <div class="circleTxt">
+                <div class="circleTxtTop">
+                    <span>蜀客酸菜鱼（珠村店）</span>
+                    <span>酸菜鱼</span>
+                </div>
+                <div class="circle-positioning">
+                    <img src="../images/mipmap-xhdpi/icon_distance.png" alt="">
+                    <span>20m</span>
+                </div>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+
+
+
+
+
+
+
+
+    </div>
+
+   
+      
+    <!-- 弹框 -->
+    <div class="circleBounced">
+        <ul class="bouncedList">
+          <li>餐饮</li>
+          <li>娱乐</li>
+          <li>查看全部</li>
+          <li class="cancel">取消</li>
+        </ul>
+      </div>
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+
+</body>
+</html>
+
+<!-- 加载地图JSAPI脚本 -->
+<script src="https://webapi.amap.com/maps?v=1.4.10&key=e0ab4a7cc4f2de9221e20568b6c11dec"></script>
+<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mui.min.js"></script>
+
+<script>
+  $('.circle-GPS').on('click',function(){
+    window.location.href = "./merchantsNav.html";
+  })
+</script>
+
+<script>
+$('.circleTabSpan').on('click',function () {
+  $(this).addClass('circleTabActive')
+  $(this).siblings().removeClass('circleTabActive')
+  $('.circleBox').toggleClass('circleBoxTab')
+  $('.headImgTab').toggleClass('headImgTab2')
+  // $('.headImg2').children().removeClass('circleBoxTab')
+  // $('.circle-GPS').hide()
+})
+
+// 判断TalkImgList的图片张数
+$('.TalkImgList li').on('click',function () {
+  console.log('22')
+})
+
+$(function () {
+  var TalkImgList =  $('.TalkImgList li');
+  for( var i=0 ; i<= TalkImgList.length ; i++ ){
+    console.log(TalkImgList.length);
+    
+  }
+})
+
+
+ // 商家圈弹框
+ $('.sjsetBtn').on('click',function () {
+    $('.mui-active').show()
+    $('.circleBounced').slideDown(200)
+  })
+  $('.mui-active').on('click',function () {
+    $('.mui-active').hide()
+    $('.circleBounced').slideUp(200)
+  })
+  $('.cancel').on('click',function () {
+    $('.mui-active').hide()
+    $('.circleBounced').slideUp(200)
+  })
+
+
+
+$('.setBtn').on('click',function () {
+  console.log('设置');
+})
+
+$('.addBtn').on('click',function () {
+  console.log('发表动态');
+  window.location.href = "../circle/publish.html";
+})
+
+// 点赞
+$('.praise').on('click',function () {
+  // $('.likeBtn').toggleClass('likeBtn2');
+  $(this).children().toggleClass('likeBtn2');
+  $(this).children().siblings('span').toggleClass('likeSpan');
+  // 判断
+  if ($(this).children().hasClass('likeBtn2')) {
+    $('.friendPraise').append(',<span>金毛</span>')
+    console.log('add');
+        } else { 
+            $('.friendPraise').pop(',<span>金毛</span>')
+    console.log('del');
+        }
+  
+  
+})
+
+// 评论
+$('.comment').on('click',function () {
+  console.log('评论');
+  $('.commentList ').append('<li><span>金毛：</span></li>')
+  
+})
+
+
+
+
+</script>

@@ -25,6 +25,19 @@
       body{
         background-color: #f7f7f7;
       }
+      input[type=text]{
+        margin-bottom: 0;
+      }
+
+      #footerInput .moreList2{
+        display: none !important;
+        background-color: #edeef2;
+        height: 2.28rem;
+        width: 100%;
+        padding: 0.4rem;
+        display: flex;
+        justify-content: space-around;
+      }
   </style>
 </head>
 <body>
@@ -132,12 +145,14 @@
 
   // 显示更多
   $('.more').on('click',function(){
-    $('.moreList').slideDown(200)
-    if( $('.moreList').css("display:none") ){
-        $('.more').on('click',function(){
-        $('.moreList').slideUp(200)
-      })
-    }
+    $('.moreList').toggleClass('moreList2')
+    // $('.moreList').removeClass('moreList')
+    // if( $('.moreList').hasClass('moreList2') ){
+    //     console.log('显示');
+    //   $('.more').on('click',function(){
+    //     $('.moreList').slideUp(200)
+    //   })
+    // }
   })
 
 

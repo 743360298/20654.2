@@ -144,7 +144,8 @@ li {
   position: fixed;
   right: 0.24rem;
   bottom: 1.7rem;
-  background: url("../images/gps-1.jpg");
+  background: url("../images/gps-1.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 
 .circle-GPS span {

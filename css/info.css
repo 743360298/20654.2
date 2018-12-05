@@ -127,14 +127,30 @@
 .h_del{
   position: absolute;
   top : 0 ;
-  right: -2rem ;
+  right: -4rem ;
   margin: 0;
   padding: 0;
-  z-index: 99999999999999;
+  z-index: 99;
   float: left;
   width: 2rem;
   height: 1.5rem ;
-  background-color: red !important;
+  background-color: #E64240 !important;
+  color: #fff;
+  font-size: 0.3rem ;
+  line-height: 1.5rem ;
+  text-align: center;
+}
+.h_top{
+  background-color: #ccc !important;
+  position: absolute;
+  top : 0 ;
+  right: -2rem ;
+  margin: 0;
+  padding: 0;
+  z-index: 99;
+  float: left;
+  width: 2rem;
+  height: 1.5rem ;
   color: #fff;
   font-size: 0.3rem ;
   line-height: 1.5rem ;
