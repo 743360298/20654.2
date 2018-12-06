@@ -63,6 +63,7 @@
   max-width: 5rem;
   word-wrap: break-word;
   word-break: break-all;
+  line-height: initial;
 }
 
 .ChatRecord .ChatRecordList .mysaid .mysaidTxt::before {
