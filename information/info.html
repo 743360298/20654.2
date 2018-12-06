@@ -170,15 +170,16 @@
   var parents=$(this).parents(".infoList");
   var len=parents.children().length;
 
-  switch (true) {
-
-   case $(this).is(".h_top"):
-   console.log('置頂');
-    parents.prepend(parent);
-    break;
-  }
-  // console.log("操作完成！！");
+  console.log('置頂');
+  parents.prepend(parent);
+  $(".infoListLi:first a").animate({'margin-left':'0'},0);
+  console.log($(".infoListLi:first"));
  });
+
+//  縮回
+ $(window).on('click',function () {
+  $(".infoListLi a").animate({'margin-left':'0'},300);
+ })
 
 // 左滑删除
 $(document).ready(function(e) {

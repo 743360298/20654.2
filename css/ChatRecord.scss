@@ -117,9 +117,10 @@
       line-height: 0.7rem ;
       #inputKeyboard{
         width: 4.8rem ;
-        height: 0.7rem ;
+        height: 0.7rem !important;
         font-size: 0.3rem ;
         color: #333333;
+        margin-bottom:  0 ;
       }
     }
     .expression{
