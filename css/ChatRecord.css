@@ -1,5 +1,9 @@
+#header {
+  position: fixed;
+}
+
 .ChatRecord {
-  padding: 0.3rem  0.24rem;
+  padding: 0.3rem  0.24rem 0rem;
 }
 
 .ChatRecord .ChatRecordList .yoursaid {
@@ -56,6 +60,9 @@
   position: relative;
   line-height: inherit;
   font-size: 0.3rem;
+  max-width: 5rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .ChatRecord .ChatRecordList .mysaid .mysaidTxt::before {
@@ -116,19 +123,19 @@
   color: #333333;
 }
 
-#footerInput .inputMethod .clickKeyboard {
-  display: none;
-  width: 4.8rem;
-  height: 0.7rem;
-  line-height: 0.7rem;
-}
-
-#footerInput .inputMethod .clickKeyboard #inputKeyboard {
+#footerInput .inputMethod .clickVoice #inputKeyboard {
   width: 4.8rem;
   height: 0.7rem !important;
   font-size: 0.3rem;
   color: #333333;
   margin-bottom: 0;
+}
+
+#footerInput .inputMethod .clickKeyboard {
+  display: none;
+  width: 4.8rem;
+  height: 0.7rem;
+  line-height: 0.7rem;
 }
 
 #footerInput .inputMethod .expression {
@@ -169,6 +176,7 @@
   justify-content: center;
   line-height: 0.7rem;
   color: #fff;
+  font-size: 0.26rem;
 }
 
 #footerInput .moreList {

@@ -38,6 +38,16 @@
         display: flex;
         justify-content: space-around;
       }
+      #inputKeyboard{
+        width: 4.8rem ;
+        height: 0.7rem !important;
+        font-size: 0.3rem ;
+        color: #333333;
+        margin-bottom:  0 ;
+      }
+      .mui-bar-nav~.mui-content{
+        padding-bottom: 0.97rem ;
+      }
   </style>
 </head>
 <body>
@@ -136,6 +146,12 @@
   $('.headImg2').on('click',function(){
     window.location.href = "./ChatSettings.html";
   })
+
+  //判断内容长度mysaidTxt
+  // $('.mysaidTxt').ready(function(){
+  //   console.log('33332');
+  // })
+
 
   // 切换输入法
   $('.voice').on('click',function(){
