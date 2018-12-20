@@ -10,23 +10,120 @@
   <link rel="stylesheet" href="../css/head.css">
   <link rel="stylesheet" href="../css/info1.css">
   <link rel="stylesheet" href="../css/info.css">
+  <link rel="stylesheet" href="../css/menuBox.css">
   <script src="../js/mui.min.js"></script>
   <script src="../js/jquery-1.12.2.js"></script>
   <script src="../js/public.js"></script>
   <!-- <script src="../js/delete.js"></script> -->
+   <style>
+      .bodyBox2{
+        margin-left: 5rem ;
+        overflow: hidden;
+        /* transform: scale(1); */
+      }
+      .mui-popup-backdrop2 {
+        position: fixed;
+        z-index: 998;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        display: none;
+        background: rgba(0,0,0,.4);
+      }
+      .mui-popup-backdrop3{
+        position: fixed;
+        z-index: 998;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        display: block;
+        background: rgba(0,0,0,.4);
+        /* transform: translateY(-100%); */
+      }
+      .mui-content{
+        position: relative;
+      }
+      .menuBox{
+        position: absolute;
+        left: 0 ;
+        /* margin-left: -5.67rem ; */
+        /* position: absolute; */
+        /* left: -5.67rem ; */
+      }
+  </style>
 </head>
-<body>
-    <header id="header" class="mui-bar mui-bar-nav">
-      <h1 class="mui-title">消息</h1>
+<body class="bodyBox">
+  <header id="header" class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">消息</h1>
       <button class=" mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-right headImg3">
           <span id="infoNum">10</span>
           <img src="../images/mipmap-xhdpi/icon_contacts.png" alt="">
         </button>
-      <button class=" mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left headImg">
+      <div class="headImgSetBtn mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left headImg">
         <img src="../images/12-1.jpg" alt="">
-      </button>
+      </div>
     </header>
     
+
+    
+     <!-- 左侧菜单 -->
+     <div class="menuBox">
+         <div class="menuHeadInfo">
+           <div class="menuHeadImg">
+             <img src="../images/12-1.jpg" alt="">
+           </div>
+           <div class="menuHeadRight">
+            <div class="menuHeadTxt">
+              <div class="menuHeadName">
+                <span>哈士奇</span>
+                <img src="../images/mipmap-xhdpi/icon_sex_girl.png" alt="">
+              </div>
+            </div>
+            <div class="menuOld">
+                <span>20岁</span>
+                <span>水瓶座</span>
+                <span>广东-广州</span>
+            </div>
+            <div class="menuHeadLike">
+              <img src="../images/mipmap-xhdpi/like.png" alt="">
+              <span>666点赞</span>
+            </div>
+           </div>
+         </div>
+         <ul class="menuList">
+           <li><a href="javascript:;">
+             <span>个人路线</span>
+             <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+           </a></li>
+           <li><a href="javascript:;">
+            <span>个人路线</span>
+            <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+           </a></li>
+           <li><a href="javascript:;">
+            <span>个人路线</span>
+            <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+           </a></li>
+           <li><a href="javascript:;">
+            <span>个人路线</span>
+            <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+           </a></li>
+           <li><a href="javascript:;">
+            <span>个人路线</span>
+            <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+           </a></li>
+           <li><a href="javascript:;">
+            <span>个人路线</span>
+            <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+           </a></li>
+         </ul>
+         <div class="menuSet">
+           <img src="../images/mipmap-xhdpi/setting.png" alt="">
+         </div>
+     </div>
 
     <div class="mui-content">
      <!-- 搜索框 -->
@@ -36,6 +133,7 @@
             <span>搜索</span>
           </div>
       </div>
+
 
       <ul class="infoList">
         <li class="infoListLi ">
@@ -99,6 +197,8 @@
       </ul>
     </div>
 
+
+
     <footer id="footer">
       <ul class="footerList">
         <li>
@@ -129,6 +229,7 @@
 
     <!-- 遮罩层  -->
     <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+    <div class="mui-popup-backdrop2 mui-active2"></div>
 
 </body>
 </html>
@@ -175,6 +276,18 @@
   $(".infoListLi:first a").animate({'margin-left':'0'},0);
   console.log($(".infoListLi:first"));
  });
+
+//  头像设置
+$(".headImgSetBtn").on('click',function () {  
+  $('body').animate({'margin-left':'5.67rem'},300);
+  $('.menuBox').slideDown()
+  $('#footer').animate({'margin-left':'5.67rem'},300);
+  $('#header').animate({'margin-left':'5.67rem'},300);
+  $('.mui-popup-backdrop2').animate({'margin-left':'5.67rem'});
+  $('.mui-popup-backdrop2').toggleClass('mui-popup-backdrop3')
+})
+// 头像缩回
+
 
 //  縮回
  $(window).on('click',function () {
