@@ -134,6 +134,7 @@ body {
 }
 
 #footer {
+  z-index: 88;
   background-color: #fff;
   position: fixed;
   bottom: 0;

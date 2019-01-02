@@ -1,6 +1,6 @@
 .menuBox {
   background-color: #fff;
-  width: 5.67rem;
+  width: 100% !important;
   display: none;
 }
 
@@ -59,13 +59,13 @@
 
 .menuList li {
   height: 1rem;
-  width: 5.67rem;
+  width: initial;
   border-top: 1px solid #ccc;
 }
 
 .menuList li a {
   height: 1rem;
-  width: 5.67rem;
+  width: initial;
   padding: 0.24rem;
   display: flex;
   justify-content: space-between;

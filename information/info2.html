@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+  <link href="../css/mui.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/head.css">
+  <link rel="stylesheet" href="../css/info1.css">
+  <link rel="stylesheet" href="../css/info.css">
+  <link rel="stylesheet" href="../css/menuBox.css">
+  <script src="../js/mui.min.js"></script>
+  <script src="../js/jquery-1.12.2.js"></script>
+  <script src="../js/public.js"></script>
+  <!-- <script src="../js/delete.js"></script> -->
+   <style>
+      .bodyBox2{
+        margin-left: 5rem ;
+        overflow: hidden;
+        /* transform: scale(1); */
+      }
+      .mui-popup-backdrop2 {
+        position: fixed;
+        z-index: 998;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        display: none;
+        background: rgba(0,0,0,.4);
+      }
+      .mui-popup-backdrop3{
+        position: fixed;
+        z-index: 998;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        display: block;
+        background: rgba(0,0,0,.4);
+        /* transform: translateY(-100%); */
+      }
+      .mui-content{
+        position: relative;
+      }
+      .menuBox{
+        position: absolute;
+        height: initial;
+        left: 0 ;
+        /* margin-left: -5.67rem ; */
+        /* position: absolute; */
+        /* left: -5.67rem ; */
+      }
+      .menuBox {
+        background-color: #fff;
+        width: 5.67rem;
+        display: block !important;
+      }
+      .mui-off-canvas-left, .mui-off-canvas-right{
+        background-color: initial;
+      }
+      body{
+        background:rgba(247,247,247,1);
+      }
+
+  </style>
+</head>
+<body class="bodyBox">
+
+   <!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-draggable mui-scalable">
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap">
+       <!-- 菜单容器 -->
+      <aside class="mui-off-canvas-left">
+        <div class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <!-- 菜单具体展示内容 -->
+                  <!-- 左侧菜单 -->
+                  <div class="menuBox">
+                      <div class="menuHeadInfo">
+                        <div class="menuHeadImg">
+                          <img src="../images/12-1.jpg" alt="">
+                        </div>
+                        <div class="menuHeadRight">
+                        <div class="menuHeadTxt">
+                          <div class="menuHeadName">
+                            <span>哈士奇</span>
+                            <img src="../images/mipmap-xhdpi/icon_sex_girl.png" alt="">
+                          </div>
+                        </div>
+                        <div class="menuOld">
+                            <span>20岁</span>
+                            <span>水瓶座</span>
+                            <span>广东-广州</span>
+                        </div>
+                        <div class="menuHeadLike">
+                          <img src="../images/mipmap-xhdpi/like.png" alt="">
+                          <span>666点赞</span>
+                        </div>
+                        </div>
+                      </div>
+                      <ul class="menuList">
+                        <li><a href="javascript:;">
+                          <span>个人路线</span>
+                          <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+                        </a></li>
+                        <li><a href="javascript:;">
+                        <span>信用分</span>
+                        <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+                        </a></li>
+                        <li><a href="javascript:;">
+                        <span>个人动态</span>
+                        <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+                        </a></li>
+                        <li><a href="javascript:;">
+                        <span>我的攻略</span>
+                        <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+                        </a></li>
+                        <li><a href="javascript:;">
+                        <span>优惠券</span>
+                        <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+                        </a></li>
+                        <li><a href="javascript:;">
+                        <span>我的收藏</span>
+                        <img src="../images/mipmap-xhdpi/smallarrow.png" alt="">
+                        </a></li>
+                      </ul>
+                      <a href="https://www.baidu.com/?tn=21002492_hao_pg">百度一下</a>
+
+                  </div>
+          </div>
+        </div>
+        <div class="menuSet">
+            <img src="../images/mipmap-xhdpi/setting.png" alt="">
+          </div>
+      </aside>
+
+
+      <!-- 主页面标题 -->
+        
+  <header id="header" class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">消息</h1>
+        <button class=" mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-right headImg3">
+            <span id="infoNum">10</span>
+            <img src="../images/mipmap-xhdpi/icon_contacts.png" alt="">
+          </button>
+        <div id="headImgSetBtn" class="headImgSetBtn mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left headImg">
+          <img src="../images/12-1.jpg" alt="">
+        </div>
+      </header>
+      <!-- 主页面内容容器 -->
+      <div class="mui-content mui-scroll-wrapper">
+        <div class="mui-scroll">
+
+         
+         
+         
+
+        </div>
+      </div>  
+          <!-- 主界面具体展示内容 -->
+          <!-- 搜索框 -->
+          <div class="search">
+              <div>
+                <img src="../images/mipmap-xhdpi/icon_search.png" alt="">
+                <span>搜索</span>
+              </div>
+          </div>
+ 
+ 
+      <ul class="infoList">
+            <li class="infoListLi ">
+              <a href="javascript:;">
+                <div class="infoImg">
+                  <img src="../images/12-1.jpg" alt="">
+                </div>
+                <div class="infoRight">
+                    <div class="infoTxt1">
+                        <span id="infoName">滑稽</span>
+                        <span>10:15</span>
+                      </div>
+                      <div class="infoTxt2">
+                        <span>吃饭睡觉打豆豆</span>
+                        <!-- <span class="infoListNum">11</span> -->
+                        <img src="../images/mipmap-xhdpi/icon_no_disturb.png" alt="">
+                      </div>
+                    </div>
+                    <div class="h_top">置顶</div>
+                    <div class="h_del">删除</div>
+              </a>
+            </li>
+            <li class="infoListLi ">
+              <a href="javascript:;">
+                <div class="infoImg">
+                  <img src="../images/00.png" alt="">
+                </div>
+                <div class="infoRight">
+                    <div class="infoTxt1">
+                        <span id="infoName">滑稽</span>
+                        <span>10:15</span>
+                      </div>
+                      <div class="infoTxt2">
+                        <span>吃饭睡觉打豆豆</span>
+                        <span class="infoListNum">11</span>
+                      </div>
+                </div>
+                <div class="h_top">置顶</div>
+                <div class="h_del">删除</div>
+              </a>
+            </li>
+            <li class="infoListLi ">
+              <a href="javascript:;">
+                <div class="infoImg">
+                  <img src="../images/00.png" alt="">
+                </div>
+                <div class="infoRight">
+                    <div class="infoTxt1">
+                        <span id="infoName">滑稽</span>
+                        <span>10:15</span>
+                      </div>
+                      <div class="infoTxt2">
+                        <span>吃饭睡觉打豆豆</span>
+                        <span class="infoListNum">11</span>
+                      </div>
+                </div>
+                <div class="h_top">置顶</div>
+                <div class="h_del">删除</div>
+              </a>
+            </li>
+            <a href="https://www.baidu.com/?tn=21002492_hao_pg">百度一下</a>
+      </ul>
+      <footer id="footer">
+          <ul class="footerList">
+            <li>
+              <a href="javascript:;"  class="footActive">
+                  <img src="..//images/mipmap-xhdpi/icon_onclick_message.png" alt="">
+                  <span>消息</span>
+              </a>
+            </li>
+            <li>
+              <a href="../siyou/siyou.html">
+                  <img src="..//images/mipmap-xhdpi/icon_friend.png" alt="">
+                  <span>似友</span>
+              </a>
+            </li>
+            <li>
+              <a href="../circle/circle.html">
+                  <img src="..//images/mipmap-xhdpi/icon_dynamic.png" alt="">
+                  <span>圈子</span>
+              </a>
+            </li>
+          </ul>
+        </footer>
+    </div>
+  </div>
+
+
+    
+
+    
+
+
+
+      
+    <!-- 弹框 -->
+    <div class="mui-popup mui-popup-in delBounced" style="display: none;"><div class="mui-popup-inner"><div class="mui-popup-title">Hello MUI</div><div class="mui-popup-text">MUI是个好框架</div></div><div class="mui-popup-buttons"><span class="mui-popup-button">是</span><span class="mui-popup-button mui-popup-button-bold">否</span></div></div>
+
+
+
+    <!-- 遮罩层  -->
+    <div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+    <div class="mui-popup-backdrop2 mui-active2"></div>
+
+</body>
+</html>
+<script>
+  $('.infoListLi').on('click',function(){
+    window.location.href = "./ChatRecord.html";
+  })
+  $('.h_del').on('click',function(){
+    event.stopPropagation()
+    console.log('删除'); 
+    $(this).parent().parent().slideUp(50, function () {
+     $(this).remove();
+    });
+    // $('.delBounced').show(200);
+    // $('.mui-active').show();
+    // mui.confirm("删除后，将会清空该会话所有记录","确定删除该会话？",["确定","取消"],function(etype){
+		// 			var index = etype.index ;
+		// 			if(index == 0 ){
+    //          $(this).parent().parent().slideUp(50, function () {
+    //          $(this).remove();
+    //          $('.delBounced').hide(200);
+    //          $('.mui-active').hide();
+    //         });
+		// 			}else if(index == 1){
+		// 					// 点取消 不删除
+    //           $('.delBounced').hide(200);
+    //           $('.mui-active').hide();
+    //      }
+    //   })
+  })
+</script>
+
+<script>
+
+mui('body').on('tap','a',function(){
+window.top.location.href=this.href;
+});
+mui('.header').on('tap','a.back',function(e){
+        callback('');
+    });
+
+// 置顶
+ $(".h_top").on('click',  function(event) {
+  event.stopPropagation()
+  // event.preventDefault;
+  var parent=$(this).parent().parent();
+  var parents=$(this).parents(".infoList");
+  var len=parents.children().length;
+
+  console.log('置頂');
+  parents.prepend(parent);
+  $(".infoListLi:first a").animate({'margin-left':'0'},0);
+  console.log($(".infoListLi:first"));
+ });
+
+//  头像设置
+$("#headImgSetBtn").on('click',function () {  
+  e.preventDefault();
+  console.log('00');
+  console.log($("#headImgSetBtn"));
+  // $('.mui-draggable').addClass('mui-active')
+  // $('.menuBox').slideDown()
+  // $('#footer').animate({'margin-left':'5.67rem'},300);
+  // $('#header').animate({'margin-left':'5.67rem'},300);
+  // $('.mui-popup-backdrop2').animate({'margin-left':'5.67rem'});
+  // $('.mui-popup-backdrop2').toggleClass('mui-popup-backdrop3')
+})
+
+// 头像缩回
+
+
+//  縮回
+ $(window).on('click',function () {
+  $(".infoListLi a").animate({'margin-left':'0'},300);
+ })
+
+// 左滑删除
+$(document).ready(function(e) {
+    // 设定每一行的宽度=屏幕宽度+按钮宽度
+    $(".infoListLi a").width($(".infoListLi").width() + $(".line-btn-delete").width());
+    // 设定常规信息区域宽度=屏幕宽度
+    $(".infoListLi a").width($(".infoListLi").width());
+    // 设定文字部分宽度（为了实现文字过长时在末尾显示...）
+    $(".line-normal-msg").width($(".infoListLi a").width() - 280);
+
+    // 获取所有行，对每一行设置监听
+    var lines = $(".infoListLi a");
+    var len = lines.length; 
+    var lastX, lastXForMobile;
+
+    // 用于记录被按下的对象
+    var pressedObj;  // 当前左滑的对象
+    var lastLeftObj; // 上一个左滑的对象
+
+    // 用于记录按下的点
+    var start;
+
+    // 网页在移动端运行时的监听
+    for (var i = 0; i < len; ++i) {
+        lines[i].addEventListener('touchstart', function(e){
+            lastXForMobile = e.changedTouches[0].pageX;
+            pressedObj = this; // 记录被按下的对象 
+
+            // 记录开始按下时的点
+            var touches = event.touches[0];
+            start = { 
+                x: touches.pageX, // 横坐标
+                y: touches.pageY  // 纵坐标
+            };
+        });
+
+        lines[i].addEventListener('touchmove',function(e){
+            // 计算划动过程中x和y的变化量
+            var touches = event.touches[0];
+            delta = {
+                x: touches.pageX - start.x,
+                y: touches.pageY - start.y
+            };
+
+            // 横向位移大于纵向位移，阻止纵向滚动
+            if (Math.abs(delta.x) > Math.abs(delta.y)) {
+                event.preventDefault();
+            }
+        });
+
+        lines[i].addEventListener('touchend', function(e){
+            if (lastLeftObj && pressedObj != lastLeftObj) { // 点击除当前左滑对象之外的任意其他位置
+                $(lastLeftObj).animate({marginLeft:"0"}, 300); // 右滑
+                lastLeftObj = null; // 清空上一个左滑的对象
+            }
+            var diffX = e.changedTouches[0].pageX - lastXForMobile;
+            if (diffX < -100) {
+                $(pressedObj).animate({marginLeft:"-4rem"}, 300); // 左滑
+                lastLeftObj && lastLeftObj != pressedObj && 
+                    $(lastLeftObj).animate({marginLeft:"0"}, 300); // 已经左滑状态的按钮右滑
+                lastLeftObj = pressedObj; // 记录上一个左滑的对象
+            } else if (diffX > 100) {
+              if (pressedObj == lastLeftObj) {
+                $(pressedObj).animate({marginLeft:"0"}, 300); // 右滑
+                lastLeftObj = null; // 清空上一个左滑的对象
+              }
+            }
+        });
+    }
+
+    // 网页在PC浏览器中运行时的监听
+    for (var i = 0; i < len; ++i) {
+        $(lines[i]).bind('mousedown', function(e){
+            lastX = e.clientX;
+            pressedObj = this; // 记录被按下的对象
+        });
+
+        $(lines[i]).bind('mouseup', function(e){
+            if (lastLeftObj && pressedObj != lastLeftObj) { // 点击除当前左滑对象之外的任意其他位置
+                $(lastLeftObj).animate({marginLeft:"0"}, 300); // 右滑
+                lastLeftObj = null; // 清空上一个左滑的对象
+            }
+            var diffX = e.clientX - lastX;
+            if (diffX < -100) {
+                $(pressedObj).animate({marginLeft:"-132px"}, 300); // 左滑
+                lastLeftObj && lastLeftObj != pressedObj && 
+                    $(lastLeftObj).animate({marginLeft:"0"}, 300); // 已经左滑状态的按钮右滑
+                lastLeftObj = pressedObj; // 记录上一个左滑的对象
+            } else if (diffX > 100) {
+              if (pressedObj == lastLeftObj) {
+                $(pressedObj).animate({marginLeft:"0"}, 300); // 右滑
+                lastLeftObj = null; // 清空上一个左滑的对象
+              }
+            }
+        });
+    }
+});
+
+
+
+
+
+</script>
